@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Input = (props) => {
+const Input = ({handleClick}) => {
     return (
-        <TimeDateInput type='text' />
+        <TimeDateInput onClick={handleClick} type='text' />
     )
 }
 
