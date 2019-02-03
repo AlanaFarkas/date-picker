@@ -14,14 +14,11 @@ class App extends Component {
   }
 
 
-handleClick = () => {
-  return this.setState(prevState => ({
-    openCalendar: !prevState.openCalendar
-  }))
-}
-
-
-
+  handleClick = () => {
+    return this.setState(prevState => ({
+      openCalendar: !prevState.openCalendar
+    }))
+  }
 
   render() {
     const htmlTable = <table>
