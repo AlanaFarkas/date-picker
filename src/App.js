@@ -3,7 +3,6 @@ import './App.css';
 import calendar_icon from './assets/calendar_icon.svg';
 import Input from './Input'
 import styled from 'styled-components';
-import MONTHS from './constants';
 import CalendarContainer from './CalendarContainer';
 
 class App extends Component {

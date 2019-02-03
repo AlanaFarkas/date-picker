@@ -2,9 +2,10 @@ import React from 'react';
 import { ALL_MONTHS, ALL_DAYS, TODAY } from './constants';
 
 const CalendarContainer = (props) => {
+
     let month = TODAY.getMonth();
     let monthString = ALL_MONTHS[month];
-
+    
     const dayStrings = ALL_DAYS.map((day, i) => {
         return <td key={i}>{day}</td>
     });
