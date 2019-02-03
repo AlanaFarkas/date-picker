@@ -2,7 +2,8 @@ import React from 'react';
 import { ALL_MONTHS, TODAY } from './constants';
 
 const CalendarContainer = (props) => {
-    console.log(TODAY.getMonth());
+    let monthString = ALL_MONTHS[TODAY.getMonth()];
+    console.log(monthString);
     return (
     <table>
         <tbody>
