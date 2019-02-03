@@ -1,5 +1,6 @@
 import React from 'react';
 import { ALL_MONTHS, ALL_DAYS, TODAY } from './constants';
+import styled from 'styled-components';
 
 const CalendarContainer = (props) => {
 
@@ -10,12 +11,13 @@ const CalendarContainer = (props) => {
         return <td key={i}>{day}</td>
     });
 
+
     return (
-    <table>
+    <CalendarTable>
+        <tr>
+            <th>{monthString}</th>
+        </tr>
         <tbody>
-            <tr>
-                <th>{monthString}</th>
-            </tr>
             <tr>
                 {dayStrings}
             </tr>
@@ -25,8 +27,16 @@ const CalendarContainer = (props) => {
                 <td>94</td> */}
             </tr>
         </tbody>
-    </table>
+    </CalendarTable>
     )
 }
 
 export default CalendarContainer;
+
+const CalendarTable = styled.table`
+    width: 100%;
+    border: 1px black solid;
+    th {
+        font-size: 25px;
+    }
+`;
