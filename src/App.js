@@ -28,7 +28,7 @@ class App extends Component {
     let monthString = ALL_MONTHS[month];
     
     const dayStrings = ALL_DAYS.map((day, i) => {
-        return <td key={i}>{day}</td>
+        return <p key={i}>{day}</p>
     });
 
 

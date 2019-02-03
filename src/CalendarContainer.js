@@ -11,7 +11,7 @@ const CalendarContainer = ({month, days, handleNext, handlePrev}) => {
             <button onClick={handleNext}>Next</button>
         </MonthContainer>
         <DaysContainer>
-            <p>{days}</p>
+            {days}
         </DaysContainer>
     </Calendar>
     )
@@ -21,13 +21,21 @@ export default CalendarContainer;
 
 const Calendar = styled.div`
     border: 1px red solid;
+    padding: 20px;
 `;
 
 const MonthContainer = styled.div`
+    margin-bottom: 20px;
 `;
 
 const Month = styled.h2`
+    display: inline;
+    margin: 0 20px;
 `;
 
 const DaysContainer = styled.div`
+    display: flex;
+    p {
+        margin: 0 20px;
+    }
 `;
