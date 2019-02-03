@@ -4,28 +4,40 @@ import calendar_icon from './assets/calendar_icon.svg';
 import Input from './Input'
 import styled from 'styled-components';
 import CalendarContainer from './CalendarContainer';
-import { ALL_MONTHS, ALL_DAYS, TODAY } from './constants';
+import { ALL_MONTHS, ALL_DAYS, TODAY, MONTH, MONTH_STRING} from './constants';
 
 class App extends Component {
 
   constructor(props) {
     super(props)
+
     this.state = {
       openCalendar: false,
+      month: MONTH_STRING,
     }
+    
   }
-
 
   handleClick = () => {
     return this.setState(prevState => ({
-      openCalendar: !prevState.openCalendar
+      openCalendar: !prevState.openCalendar,
     }))
+  }
+
+  handleNext = () => {
+    let month = TODAY.getMonth();
+    let monthString = ALL_MONTHS[month + 1];
+    console.log(monthString);
+  }
+
+  handlePrev = () => {
+    let month = TODAY.getMonth();
+    let monthString = ALL_MONTHS[month - 1];
+    console.log(monthString);
   }
 
   render() {
 
-    let month = TODAY.getMonth();
-    let monthString = ALL_MONTHS[month];
     
     const dayStrings = ALL_DAYS.map((day, i) => {
         return <p key={i}>{day}</p>
@@ -38,7 +50,13 @@ class App extends Component {
       <InputContainerDiv>      
         <Input />
         <CalendarImg onClick={this.handleClick} src={calendar_icon} />
-        {this.state.openCalendar ? <CalendarContainer month={monthString} days={dayStrings} /> : null}
+        {this.state.openCalendar ? 
+            <CalendarContainer 
+            month={this.state.month} 
+            days={dayStrings} 
+            handleNext={this.handleNext} 
+            handlePrev={this.handlePrev} /> 
+          : null}
       </InputContainerDiv>
       </div>
     );
