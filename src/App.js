@@ -3,6 +3,8 @@ import './App.css';
 import calendar_icon from './assets/calendar_icon.svg';
 import Input from './Input'
 import styled from 'styled-components';
+import MONTHS from './constants';
+import CalendarContainer from './CalendarContainer';
 
 class App extends Component {
 
@@ -21,30 +23,14 @@ class App extends Component {
   }
 
   render() {
-    const htmlTable = <table>
-    <tr>
-      <th>Firstname</th>
-      <th>Lastname</th> 
-      <th>Age</th>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td> 
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>Eve</td>
-      <td>Jackson</td> 
-      <td>94</td>
-    </tr>
-  </table>
+
     return (
       <div className="App">
       <h1>Choose a date</h1>
       <InputContainerDiv>      
         <Input />
         <CalendarImg onClick={this.handleClick} src={calendar_icon} />
-        {this.state.openCalendar ? htmlTable : null}
+        {this.state.openCalendar ? <CalendarContainer/> : null}
       </InputContainerDiv>
       </div>
     );
