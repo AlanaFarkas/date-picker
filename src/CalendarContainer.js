@@ -1,21 +1,19 @@
 import React from 'react';
-import { ALL_MONTHS, TODAY } from './constants';
+import { ALL_MONTHS, ALL_DAYS, TODAY } from './constants';
 
 const CalendarContainer = (props) => {
     let monthString = ALL_MONTHS[TODAY.getMonth()];
-    console.log(monthString);
+    const dayStrings = ALL_DAYS.map((day, i) => {
+        return <td key={i}>{day}</td>
+    })
     return (
     <table>
         <tbody>
             <tr>
-                <th>Firstname</th>
-                <th>Lastname</th> 
-                <th>Age</th>
+                <th>{monthString}</th>
             </tr>
             <tr>
-                <td>Jill</td>
-                <td>Smith</td> 
-                <td>50</td>
+                {dayStrings}
             </tr>
             <tr>
                 <td>Eve</td>
