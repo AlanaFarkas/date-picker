@@ -4,9 +4,7 @@ import calendar_icon from './assets/calendar_icon.svg';
 import Input from './Input'
 import styled from 'styled-components';
 import CalendarContainer from './CalendarContainer';
-import { ALL_DAYS } from './constants';
-
-const ALL_MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'];
+import { ALL_DAYS, ALL_MONTHS } from './constants';
 
 class App extends Component {
   
@@ -17,11 +15,11 @@ class App extends Component {
     let month_number = today.getMonth();
     let month_string = ALL_MONTHS[month_number];
     let year = today.getFullYear();
-    let counter = month_number;
-    
+    let counter = month_number;    
 
     this.state = {
       weekdays: ALL_DAYS,
+      months: ALL_MONTHS,
       openCalendar: false,
       today: today,
       month_number: month_number,
@@ -31,7 +29,7 @@ class App extends Component {
     }    
   }
 
-  handleClick = () => {
+  showCalendar = () => {
     return this.setState(prevState => ({
       openCalendar: !prevState.openCalendar
     }))
@@ -72,10 +70,11 @@ class App extends Component {
       <h1>Choose a date</h1>
       <InputContainerDiv>      
         <Input />
-        <CalendarImg onClick={this.handleClick} src={calendar_icon} />
+        <CalendarImg onClick={this.showCalendar} src={calendar_icon} />
         {this.state.openCalendar ? 
             <CalendarContainer 
             month={this.state.month_string} 
+            year={this.state.year}
             days={dayStrings} 
             handleNext={this.handleNext} 
             handlePrev={this.handlePrev} /> 

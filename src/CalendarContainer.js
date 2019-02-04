@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const CalendarContainer = ({month, days, handleNext, handlePrev}) => {
+const CalendarContainer = ({year, month, days, handleNext, handlePrev}) => {
 
     return (
     <Calendar>
         <MonthContainer>
             <button onClick={handlePrev}>Prev</button>
-            <Month>{month}</Month>
+            <Month>{month} {year}</Month>
             <button onClick={handleNext}>Next</button>
         </MonthContainer>
         <DaysContainer>
