@@ -84,9 +84,8 @@ class App extends Component {
     for(var i = 1; i < this.state.displayedDates + 1; i++) {
       dates.push(i);
     }
-
+    
     const cellDates = dates.map(d => <div key={d}>{d}</div>)
-    console.log(this.state.displayedDates)
 
     return (
       <div className="App">
