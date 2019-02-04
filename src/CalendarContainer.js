@@ -21,7 +21,9 @@ export default CalendarContainer;
 
 const Calendar = styled.div`
     border: 1px red solid;
+    width: 600px;
     padding: 20px;
+    margin: auto;
 `;
 
 const MonthContainer = styled.div`
@@ -34,8 +36,7 @@ const Month = styled.h2`
 `;
 
 const DaysContainer = styled.div`
-    display: flex;
     p {
-        margin: 0 20px;
+        margin: 0 10px;
     }
 `;

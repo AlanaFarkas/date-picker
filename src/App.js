@@ -87,15 +87,15 @@ class App extends Component {
       <InputContainerDiv>      
         <Input />
         <CalendarImg onClick={this.showCalendar} src={calendar_icon} />
-        {this.state.openCalendar ? 
-            <CalendarContainer 
-            month={this.state.month_string} 
-            year={this.state.year}
-            days={dayStrings} 
-            handleNext={this.handleNext} 
-            handlePrev={this.handlePrev} /> 
-          : null}
       </InputContainerDiv>
+      {this.state.openCalendar ? 
+        <CalendarContainer 
+          month={this.state.month_string} 
+          year={this.state.year}
+          days={dayStrings} 
+          handleNext={this.handleNext} 
+          handlePrev={this.handlePrev} /> 
+      : null}      
       </div>
     );
   }
