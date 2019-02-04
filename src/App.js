@@ -41,9 +41,7 @@ class App extends Component {
         month_number: 0,
         month_string: ALL_MONTHS[0],
         year: prevState.year + 1
-      }),
-      console.log(this.state.month_string)
-      )
+      }))
     } else {
       return this.setState(prevState => ({
         month_number: prevState.month_number + 1,
@@ -62,7 +60,7 @@ class App extends Component {
     } else if(this.state.month_number === 0) {
       return this.setState(prevState => ({
         month_number: 11,
-        month_string: ALL_MONTHS[this.state.month_number],
+        month_string: ALL_MONTHS[11],
         year: prevState.year - 1
       }))
     } else {
@@ -72,14 +70,11 @@ class App extends Component {
       }))
     }
   }
-  
-
 
   render() {    
     const dayStrings = this.state.weekdays.map((day, i) => {
         return <p key={i}>{day}</p>
     });
-
 
     return (
       <div className="App">
