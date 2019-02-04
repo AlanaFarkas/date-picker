@@ -36,7 +36,7 @@ class App extends Component {
   }
 
   handleNext = () => {
-    if(this.state.counter == 12) {
+    if(this.state.counter == 11) {
       return this.setState(prevState => ({
         month_number: 0,
         counter: 0,
