@@ -4,42 +4,63 @@ import calendar_icon from './assets/calendar_icon.svg';
 import Input from './Input'
 import styled from 'styled-components';
 import CalendarContainer from './CalendarContainer';
-import { ALL_MONTHS, ALL_DAYS, TODAY, MONTH, MONTH_STRING} from './constants';
+import { ALL_DAYS } from './constants';
 
 class App extends Component {
 
   constructor(props) {
     super(props)
+    
+    const ALL_MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'];
+    let today = new Date();
+    let month_number = today.getMonth();
+    let month_string = ALL_MONTHS[month_number];
+    let year = today.getFullYear();
+    let counter = month_number;
+    
 
     this.state = {
+      weekdays: ALL_DAYS,
       openCalendar: false,
-      month: MONTH_STRING,
-    }
-    
+      today: today,
+      month_number: month_number,
+      month_string: month_string,
+      year: year,
+      counter: counter,
+    }    
   }
 
   handleClick = () => {
     return this.setState(prevState => ({
-      openCalendar: !prevState.openCalendar,
+      openCalendar: !prevState.openCalendar
     }))
   }
 
   handleNext = () => {
-    let month = TODAY.getMonth();
-    let monthString = ALL_MONTHS[month + 1];
-    console.log(monthString);
+    if(this.state.counter > 11) {
+      return this.setState(prevState => ({
+        month_number: 0,
+        // month_string: ALL_MONTHS[counter],
+        counter: 0,
+        year: prevState.year + 1
+      }))
+    } else {
+      return this.setState(prevState => ({
+        month_number: prevState.month_number + 1,
+        counter: prevState.counter + 1,
+      }))
+    }
   }
 
   handlePrev = () => {
-    let month = TODAY.getMonth();
-    let monthString = ALL_MONTHS[month - 1];
-    console.log(monthString);
+    return this.setState(prevState => ({
+      month_number: prevState.month_number - 1 
+    }))
   }
 
-  render() {
 
-    
-    const dayStrings = ALL_DAYS.map((day, i) => {
+  render() {    
+    const dayStrings = this.state.weekdays.map((day, i) => {
         return <p key={i}>{day}</p>
     });
 
@@ -52,7 +73,7 @@ class App extends Component {
         <CalendarImg onClick={this.handleClick} src={calendar_icon} />
         {this.state.openCalendar ? 
             <CalendarContainer 
-            month={this.state.month} 
+            month={this.state.month_string} 
             days={dayStrings} 
             handleNext={this.handleNext} 
             handlePrev={this.handlePrev} /> 
