@@ -36,7 +36,7 @@ class App extends Component {
   }
 
   handleNext = () => {
-    if(this.state.month_number == 11) {
+    if(this.state.month_number === 11) {
       return this.setState(prevState => ({
         month_number: 0,
         month_string: ALL_MONTHS[0],
@@ -59,7 +59,7 @@ class App extends Component {
         month_string: ALL_MONTHS[this.state.month_number],
         year: prevState.year - 1
       }))
-    } else if(this.state.month_number == 0) {
+    } else if(this.state.month_number === 0) {
       return this.setState(prevState => ({
         month_number: 11,
         month_string: ALL_MONTHS[this.state.month_number],
