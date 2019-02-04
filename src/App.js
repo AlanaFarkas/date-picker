@@ -29,7 +29,6 @@ class App extends Component {
     let monthDigit = today.getMonth();
     let monthArray = Object.keys(ALL_MONTHS);
     let year = today.getFullYear();
-    // let displayedMonth = ALL_MONTHS[month_number]
 
     this.state = {
       weekdays: ALL_DAYS,
@@ -38,8 +37,10 @@ class App extends Component {
       today: today,
       monthDigit: monthDigit,
       displayedMonth: monthArray[monthDigit],
+      // displayedDates: ALL_MONTHS.displayedMonth,
       year: year,
     }    
+    console.log(typeof(this.state.displayedDates))
   }
 
   showCalendar = () => {
