@@ -15,7 +15,7 @@ class App extends Component {
     let month_number = today.getMonth();
     let month_string = ALL_MONTHS[month_number];
     let year = today.getFullYear();
-    let counter = month_number;    
+    // let counter = month_number;    
 
     this.state = {
       weekdays: ALL_DAYS,
@@ -25,7 +25,7 @@ class App extends Component {
       month_number: month_number,
       month_string: month_string,
       year: year,
-      counter: counter,
+      // counter: counter,
     }    
   }
 
