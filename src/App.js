@@ -44,7 +44,7 @@ class App extends Component {
         year: prevState.year + 1
       }))
     } else {
-      return this.setState(prevState => ({
+      return this.setState(prevState => (console.log(this.state.month_string), {
         month_number: prevState.month_number + 1,
         counter: prevState.counter + 1,
         month_string: ALL_MONTHS[prevState.counter + 1]
@@ -53,9 +53,20 @@ class App extends Component {
   }
 
   handlePrev = () => {
-    return this.setState(prevState => ({
-      month_number: prevState.month_number - 1 
-    }))
+    if(this.state.counter > 11) {
+      return this.setState(prevState => ({
+        month_number: 0,
+        counter: 0,
+        month_string: ALL_MONTHS[0],
+        year: prevState.year - 1
+      }))
+    } else {
+      return this.setState(prevState => (console.log(this.state.month_string), {
+        month_number: prevState.month_number - 1,
+        counter: prevState.counter - 1,
+        month_string: ALL_MONTHS[prevState.counter - 1]
+      }))
+    }
   }
 
 
