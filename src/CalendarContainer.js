@@ -6,9 +6,9 @@ const CalendarContainer = ({year, month, days, handleNext, handlePrev}) => {
     return (
     <Calendar>
         <MonthContainer>
-            <button onClick={handlePrev}>Prev</button>
+            <PrevButton onClick={handlePrev}>Prev</PrevButton>
             <Month>{month} {year}</Month>
-            <button onClick={handleNext}>Next</button>
+            <NextButton onClick={handleNext}>Next</NextButton>
         </MonthContainer>
         <DaysContainer>
             {days}
@@ -21,6 +21,7 @@ export default CalendarContainer;
 
 const Calendar = styled.div`
     border: 1px red solid;
+    border-radius: 5px;
     width: 600px;
     padding: 20px;
     margin: auto;
@@ -38,5 +39,14 @@ const Month = styled.h2`
 const DaysContainer = styled.div`
     p {
         margin: 0 10px;
+        display: inline-block;
     }
+`;
+
+const PrevButton = styled.button`
+    float: left;
+`;
+
+const NextButton = styled.button`
+    float: right;
 `;
