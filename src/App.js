@@ -5,6 +5,20 @@ import Input from './Input'
 import styled from 'styled-components';
 import CalendarContainer from './CalendarContainer';
 import { ALL_DAYS, ALL_MONTHS } from './constants';
+// ALL_MONTHS = {
+//   'January': 31,
+//   'February': 28,
+//   'March': 31,
+//   'April': 30,
+//   'May': 31,
+//   'June': 30,
+//   'July': 31,
+//   'August': 30,
+//   'September': 30,
+//   'October': 31,
+//   'November': 30,
+//   'December': 31
+// }
 
 class App extends Component {
   
@@ -12,17 +26,18 @@ class App extends Component {
     super(props)
     
     const today = new Date();
-    let month_number = today.getMonth();
-    let month_string = ALL_MONTHS[month_number];
+    let monthDigit = today.getMonth();
+    let monthArray = Object.keys(ALL_MONTHS);
     let year = today.getFullYear();
+    // let displayedMonth = ALL_MONTHS[month_number]
 
     this.state = {
       weekdays: ALL_DAYS,
-      months: ALL_MONTHS,
+      months: monthArray,
       openCalendar: false,
       today: today,
-      month_number: month_number,
-      month_string: month_string,
+      monthDigit: monthDigit,
+      displayedMonth: monthArray[monthDigit],
       year: year,
     }    
   }
@@ -34,37 +49,37 @@ class App extends Component {
   }
 
   handleNext = () => {
-    if(this.state.month_number === 11) {
+    if(this.state.monthDigit === 11) {
       return this.setState(prevState => ({
-        month_number: 0,
-        month_string: ALL_MONTHS[0],
+        monthDigit: 0,
+        displayedMonth: this.state.months[0],
         year: prevState.year + 1
       }))
     } else {
       return this.setState(prevState => ({
-        month_number: prevState.month_number + 1,
-        month_string: ALL_MONTHS[prevState.month_number + 1]
+        monthDigit: prevState.monthDigit + 1,
+        displayedMonth: this.state.months[prevState.monthDigit + 1]
       }))
     }
   }
 
   handlePrev = () => {
-    if(this.state.month_number > 11) {
+    if(this.state.monthDigit > 11) {
       return this.setState(prevState => ({
-        month_number: 0,
-        month_string: ALL_MONTHS[this.state.month_number],
+        monthDigit: 0,
+        displayedMonth: this.state.months[this.state.monthDigit],
         year: prevState.year - 1
       }))
-    } else if(this.state.month_number === 0) {
+    } else if(this.state.monthDigit === 0) {
       return this.setState(prevState => ({
-        month_number: 11,
-        month_string: ALL_MONTHS[11],
+        monthDigit: 11,
+        displayedMonth: this.state.months[11],
         year: prevState.year - 1
       }))
     } else {
       return this.setState(prevState => ({
-        month_number: prevState.month_number - 1,
-        month_string: ALL_MONTHS[prevState.month_number - 1]
+        monthDigit: prevState.monthDigit - 1,
+        displayedMonth: this.state.months[prevState.monthDigit - 1]
       }))
     }
   }
@@ -83,7 +98,7 @@ class App extends Component {
       </InputContainerDiv>
       {this.state.openCalendar ? 
         <CalendarContainer 
-          month={this.state.month_string} 
+          month={this.state.displayedMonth} 
           year={this.state.year}
           days={dayStrings} 
           handleNext={this.handleNext} 
