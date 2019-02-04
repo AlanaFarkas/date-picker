@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const CalendarContainer = ({year, month, days, handleNext, handlePrev}) => {
+const CalendarContainer = ({year, month, days, dates, handleNext, handlePrev}) => {
 
     return (
     <Calendar>
@@ -13,6 +13,9 @@ const CalendarContainer = ({year, month, days, handleNext, handlePrev}) => {
         <DaysContainer>
             {days}
         </DaysContainer>
+        <DatesContainer>
+            {dates}
+        </DatesContainer>
     </Calendar>
     )
 }
@@ -36,6 +39,14 @@ const Month = styled.h2`
     margin: 0 20px;
 `;
 
+const PrevButton = styled.button`
+    float: left;
+`;
+
+const NextButton = styled.button`
+    float: right;
+`;
+
 const DaysContainer = styled.div`
     p {
         margin: 0 10px;
@@ -43,10 +54,6 @@ const DaysContainer = styled.div`
     }
 `;
 
-const PrevButton = styled.button`
-    float: left;
-`;
+const DatesContainer = styled.div`
 
-const NextButton = styled.button`
-    float: right;
 `;

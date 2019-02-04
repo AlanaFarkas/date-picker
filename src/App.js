@@ -5,20 +5,6 @@ import Input from './Input'
 import styled from 'styled-components';
 import CalendarContainer from './CalendarContainer';
 import { ALL_DAYS, ALL_MONTHS } from './constants';
-// ALL_MONTHS = {
-//   'January': 31,
-//   'February': 28,
-//   'March': 31,
-//   'April': 30,
-//   'May': 31,
-//   'June': 30,
-//   'July': 31,
-//   'August': 30,
-//   'September': 30,
-//   'October': 31,
-//   'November': 30,
-//   'December': 31
-// }
 
 class App extends Component {
   
@@ -28,19 +14,20 @@ class App extends Component {
     const today = new Date();
     let monthDigit = today.getMonth();
     let monthArray = Object.keys(ALL_MONTHS);
+    let datesArray = Object.values(ALL_MONTHS);
     let year = today.getFullYear();
 
     this.state = {
       weekdays: ALL_DAYS,
       months: monthArray,
+      dates: datesArray,
       openCalendar: false,
       today: today,
       monthDigit: monthDigit,
       displayedMonth: monthArray[monthDigit],
-      // displayedDates: ALL_MONTHS.displayedMonth,
+      displayedDates: datesArray[monthDigit],
       year: year,
     }    
-    console.log(typeof(this.state.displayedDates))
   }
 
   showCalendar = () => {
@@ -59,7 +46,8 @@ class App extends Component {
     } else {
       return this.setState(prevState => ({
         monthDigit: prevState.monthDigit + 1,
-        displayedMonth: this.state.months[prevState.monthDigit + 1]
+        displayedMonth: this.state.months[prevState.monthDigit + 1],
+        displayedDates: this.state.dates[prevState.monthDigit + 1]
       }))
     }
   }
@@ -80,15 +68,25 @@ class App extends Component {
     } else {
       return this.setState(prevState => ({
         monthDigit: prevState.monthDigit - 1,
-        displayedMonth: this.state.months[prevState.monthDigit - 1]
+        displayedMonth: this.state.months[prevState.monthDigit - 1],
+        displayedDates: this.state.dates[prevState.monthDigit - 1]
       }))
     }
   }
 
+  
   render() {    
     const dayStrings = this.state.weekdays.map((day, i) => {
-        return <p key={i}>{day}</p>
+      return <p key={i}>{day}</p>
     });
+    
+    let dates = []
+    for(var i = 1; i < this.state.displayedDates + 1; i++) {
+      dates.push(i);
+    }
+
+    const cellDates = dates.map(d => <div key={d}>{d}</div>)
+    console.log(this.state.displayedDates)
 
     return (
       <div className="App">
@@ -102,6 +100,7 @@ class App extends Component {
           month={this.state.displayedMonth} 
           year={this.state.year}
           days={dayStrings} 
+          dates={cellDates}
           handleNext={this.handleNext} 
           handlePrev={this.handlePrev} /> 
       : null}      
