@@ -52,8 +52,13 @@ const DaysContainer = styled.div`
         margin: 0 10px;
         display: inline-block;
     }
-`;
-
+    `;
+    
 const DatesContainer = styled.div`
-
+    display: flex;
+    flex-flow: row wrap;
+    div {
+        border: 1px dotted black;
+        width: 50px;
+    }
 `;
