@@ -6,13 +6,14 @@ import styled from 'styled-components';
 import CalendarContainer from './CalendarContainer';
 import { ALL_DAYS } from './constants';
 
-class App extends Component {
+const ALL_MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'];
 
+class App extends Component {
+  
   constructor(props) {
     super(props)
     
-    const ALL_MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'];
-    let today = new Date();
+    const today = new Date();
     let month_number = today.getMonth();
     let month_string = ALL_MONTHS[month_number];
     let year = today.getFullYear();
@@ -40,14 +41,15 @@ class App extends Component {
     if(this.state.counter > 11) {
       return this.setState(prevState => ({
         month_number: 0,
-        // month_string: ALL_MONTHS[counter],
         counter: 0,
+        month_string: ALL_MONTHS[0],
         year: prevState.year + 1
       }))
     } else {
       return this.setState(prevState => ({
         month_number: prevState.month_number + 1,
         counter: prevState.counter + 1,
+        month_string: ALL_MONTHS[prevState.counter + 1]
       }))
     }
   }
