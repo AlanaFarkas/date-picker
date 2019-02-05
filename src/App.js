@@ -84,7 +84,7 @@ class App extends Component {
     
     let dates = [];
     
-    const chunkDates = (dates) => {
+    const weekRows = (dates) => {
       for(var i = 1; i < this.state.displayedDates + 1; i++) {
         dates.push(i);
       }
@@ -92,7 +92,7 @@ class App extends Component {
     }
 
     // let chunkyArray = chunk(dates, 7);
-    console.log(chunkDates(dates))
+    console.log(weekRows(dates))
 
     const cellDates = dates.map(d => <div key={d}>{d}</div>)
 
