@@ -48,7 +48,8 @@ const NextButton = styled.button`
 `;
 
 const DaysContainer = styled.div`
-    p {
+    border: 1px dotted blue;
+    div {
         margin: 0 10px;
         display: inline-block;
     }
@@ -58,7 +59,7 @@ const DatesContainer = styled.div`
     display: flex;
     flex-flow: row wrap;
     div {
-        border: 1px dotted black;
+        border: 1px dotted green;
         width: 50px;
     }
 `;

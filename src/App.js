@@ -4,7 +4,9 @@ import calendar_icon from './assets/calendar_icon.svg';
 import Input from './Input'
 import styled from 'styled-components';
 import CalendarContainer from './CalendarContainer';
+import { chunk } from 'lodash';
 import { ALL_DAYS, ALL_MONTHS } from './constants';
+
 
 class App extends Component {
   
@@ -77,13 +79,16 @@ class App extends Component {
   
   render() {    
     const dayStrings = this.state.weekdays.map((day, i) => {
-      return <p key={i}>{day}</p>
+      return <div key={i}>{day}</div>
     });
     
     let dates = []
     for(var i = 1; i < this.state.displayedDates + 1; i++) {
       dates.push(i);
     }
+
+    let chunkyArray = chunk(dates, 7);
+    console.log(chunkyArray);
     
     const cellDates = dates.map(d => <div key={d}>{d}</div>)
 
