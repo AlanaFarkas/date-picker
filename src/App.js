@@ -82,14 +82,18 @@ class App extends Component {
       return <div key={i}>{day}</div>
     });
     
-    let dates = []
-    for(var i = 1; i < this.state.displayedDates + 1; i++) {
-      dates.push(i);
+    let dates = [];
+    
+    const chunkDates = (dates) => {
+      for(var i = 1; i < this.state.displayedDates + 1; i++) {
+        dates.push(i);
+      }
+      return chunk(dates, 7);
     }
 
-    let chunkyArray = chunk(dates, 7);
-    console.log(chunkyArray);
-    
+    // let chunkyArray = chunk(dates, 7);
+    console.log(chunkDates(dates))
+
     const cellDates = dates.map(d => <div key={d}>{d}</div>)
 
     return (
