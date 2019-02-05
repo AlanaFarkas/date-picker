@@ -90,11 +90,11 @@ class App extends Component {
     
     dates = chunk(dates, 7);
 
-    const calendarWeeks = dates.map(date => {
+    const calendarWeeks = dates.map((date, i) => {
       return (
-        <div>
-          {date.map(number => <div key={number}>{number}</div>)}
-        </div>
+        <WeekDiv key={i}>
+          {date.map(number => <DayDiv key={number}>{number}</DayDiv>)}
+        </WeekDiv>
       )
     })
 
@@ -131,4 +131,12 @@ const CalendarImg = styled.img`
   position: absolute;
   right: 3px;
   top: 3px;
+`;
+
+const WeekDiv = styled.div`
+
+`;
+
+const DayDiv = styled.div`
+
 `;
