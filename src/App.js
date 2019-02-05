@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import CalendarContainer from './CalendarContainer';
 import { chunk } from 'lodash';
 import { ALL_DAYS, ALL_MONTHS } from './constants';
+import { whatDateDoesTheMonthStartOn,chunkIt } from './utils';
 
 
 class App extends Component {
@@ -88,15 +89,16 @@ class App extends Component {
       dates.push(i);
     }
     
-    dates = chunk(dates, 7);
+    dates = chunkIt(dates.length, whatDateDoesTheMonthStartOn(this.state.today));
 
-    const calendarWeeks = dates.map((date, i) => {
+    let calendarWeeks = dates.map((date, i) => {
       return (
         <WeekDiv key={i}>
           {date.map(number => <DayDiv key={number}>{number}</DayDiv>)}
         </WeekDiv>
       )
     })
+    calendarWeeks.push(<div>STARTS ON: {whatDateDoesTheMonthStartOn(this.state.today)}</div>)
 
     return (
       <div className="App">
@@ -112,7 +114,8 @@ class App extends Component {
           days={dayStrings} 
           dates={calendarWeeks}
           handleNext={this.handleNext} 
-          handlePrev={this.handlePrev} /> 
+          handlePrev={this.handlePrev} 
+          /> 
       : null}      
       </div>
     );
