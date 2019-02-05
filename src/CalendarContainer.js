@@ -56,10 +56,5 @@ const DaysContainer = styled.div`
     `;
     
 const DatesContainer = styled.div`
-div {
-    border: 1px dotted green;
-    width: 50px;
-}
 `;
-// display: flex;
-// flex-flow: row wrap;
+

@@ -134,7 +134,7 @@ const CalendarImg = styled.img`
 `;
 
 const WeekDiv = styled.div`
-
+  border: 2px blue solid;
 `;
 
 const DayDiv = styled.div`
