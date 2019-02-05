@@ -84,17 +84,19 @@ class App extends Component {
     
     let dates = [];
     
-    const weekRows = (dates) => {
-      for(var i = 1; i < this.state.displayedDates + 1; i++) {
-        dates.push(i);
-      }
-      return chunk(dates, 7);
+    for(var i = 1; i < this.state.displayedDates + 1; i++) {
+      dates.push(i);
     }
+    
+    dates = chunk(dates, 7);
 
-    // let chunkyArray = chunk(dates, 7);
-    console.log(weekRows(dates))
-
-    const cellDates = dates.map(d => <div key={d}>{d}</div>)
+    const calendarWeeks = dates.map(date => {
+      return (
+        <div>
+          {date.map(number => <div key={number}>{number}</div>)}
+        </div>
+      )
+    })
 
     return (
       <div className="App">
@@ -108,7 +110,7 @@ class App extends Component {
           month={this.state.displayedMonth} 
           year={this.state.year}
           days={dayStrings} 
-          dates={cellDates}
+          dates={calendarWeeks}
           handleNext={this.handleNext} 
           handlePrev={this.handlePrev} /> 
       : null}      
