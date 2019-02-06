@@ -1,30 +1,39 @@
 export function whatDateDoesTheMonthStartOn(theDate){
+    // set firstOfMonth to given DATE OBJECT
     let firstOfMonth = theDate;
+
+    // set firstOfMonth (aka theDate) to be the actual first day of the given month
     firstOfMonth = firstOfMonth.setDate(1);
-    const firstOfMonthAsInt = (new Date(firstOfMonth)).getDay();
-    return firstOfMonthAsInt;
+
+    // set firstDayOfMonthAsInt to the day of the week the first of the month fell on; ex: Friday = 5
+    const firstDayOfMonthAsInt = (new Date(firstOfMonth)).getDay();
+
+    // return number; ex: 5 for Friday
+    return firstDayOfMonthAsInt;
 }
 
-export function createWeeks(numberOfDaysInThisMonth, dayItStartsOn){
-    let completeMonth = [];
+
+
+export function createWeeks(daysInThisMonth, dayItStartsOn){
+    let thisMonth = [];
     let thisWeek = [];
 
     for(let i = 0; i < dayItStartsOn; i++) {
         thisWeek.push(null);
     }
 
-    for(let j = 1; j <= numberOfDaysInThisMonth; j++){
+    for(let j = 1; j <= daysInThisMonth; j++){
         thisWeek.push(j);
         if(thisWeek.length === 7) {
-            completeMonth.push(thisWeek);
+            thisMonth.push(thisWeek);
             thisWeek = [];
         }
     }
     
     if (thisWeek.length > 0){
-        completeMonth.push(thisWeek);
+        thisMonth.push(thisWeek);
     }
 
-    return completeMonth;
+    return thisMonth;
 
 }

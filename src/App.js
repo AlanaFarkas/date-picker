@@ -88,15 +88,16 @@ class App extends Component {
       dates.push(i);
     }
     
-    dates = createWeeks(dates.length, whatDateDoesTheMonthStartOn(this.state.today));
+    dates = createWeeks(dates.length, whatDateDoesTheMonthStartOn(this.state.today)); //the second arg here is the issue? 
 
-    let calendarWeeks = dates.map((date, i) => {
+    let calendarWeeks = dates.map((week, i) => {
       return (
         <tr key={i}>
-          {date.map(number => <td key={number}>{number}</td>)}
+          {week.map(number => <td key={number}>{number}</td>)}
         </tr>
       )
     })
+    
     calendarWeeks.push(<div>STARTS ON: {whatDateDoesTheMonthStartOn(this.state.today)}</div>)
 
     return (
