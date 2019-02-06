@@ -4,7 +4,6 @@ import calendar_icon from './assets/calendar_icon.svg';
 import Input from './Input'
 import styled from 'styled-components';
 import CalendarContainer from './CalendarContainer';
-import { chunk } from 'lodash';
 import { ALL_DAYS, ALL_MONTHS } from './constants';
 import { whatDateDoesTheMonthStartOn,chunkIt } from './utils';
 
@@ -80,7 +79,7 @@ class App extends Component {
   
   render() {    
     const dayStrings = this.state.weekdays.map((day, i) => {
-      return <div key={i}>{day}</div>
+      return <WeekDayData key={i}>{day}</WeekDayData>
     });
     
     let dates = [];
@@ -93,9 +92,9 @@ class App extends Component {
 
     let calendarWeeks = dates.map((date, i) => {
       return (
-        <WeekDiv key={i}>
-          {date.map(number => <DayDiv key={number}>{number}</DayDiv>)}
-        </WeekDiv>
+        <tr key={i}>
+          {date.map(number => <td key={number}>{number}</td>)}
+        </tr>
       )
     })
     calendarWeeks.push(<div>STARTS ON: {whatDateDoesTheMonthStartOn(this.state.today)}</div>)
@@ -136,10 +135,14 @@ const CalendarImg = styled.img`
   top: 3px;
 `;
 
-const WeekDiv = styled.div`
+const WeekDiv = styled.td`
   border: 2px blue solid;
 `;
 
 const DayDiv = styled.div`
+
+`;
+
+const WeekDayData = styled.td`
 
 `;

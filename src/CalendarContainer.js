@@ -4,19 +4,23 @@ import styled from 'styled-components';
 const CalendarContainer = ({year, month, days, dates, handleNext, handlePrev}) => {
 
     return (
-    <Calendar>
-        <MonthContainer>
-            <PrevButton onClick={handlePrev}>Prev</PrevButton>
-            <Month>{month} {year}</Month>
-            <NextButton onClick={handleNext}>Next</NextButton>
-        </MonthContainer>
-        <DaysContainer>
-            {days}
-        </DaysContainer>
-        <DatesContainer>
-            {dates}
-        </DatesContainer>
-    </Calendar>
+        <Calendar>
+            <CalendarTable>
+                <thead>
+                    <tr>
+                        <PrevButton onClick={handlePrev}>Prev</PrevButton>
+                        <TableHeading>{month}</TableHeading>
+                        <TableHeading>{year}</TableHeading>
+                        <NextButton onClick={handleNext}>Next</NextButton>
+                    </tr>
+                </thead>
+                <tbody>
+                    {days}
+                    {dates}
+                </tbody>
+
+            </CalendarTable>
+        </Calendar>
     )
 }
 
@@ -30,31 +34,26 @@ const Calendar = styled.div`
     margin: auto;
 `;
 
-const MonthContainer = styled.div`
-    margin-bottom: 20px;
+const CalendarTable = styled.table`
+    width: 100%;
 `;
 
-const Month = styled.h2`
-    display: inline;
-    margin: 0 20px;
+const PrevButton = styled.th`
+  
 `;
 
-const PrevButton = styled.button`
-    float: left;
-`;
-
-const NextButton = styled.button`
-    float: right;
-`;
-
-const DaysContainer = styled.div`
-    border: 1px dotted blue;
-    div {
-        margin: 0 10px;
-        display: inline-block;
-    }
-    `;
+const NextButton = styled.th`
     
-const DatesContainer = styled.div`
+`;
+
+const TableHeading = styled.th`
+    font-size: 16px;
+`;
+
+const WeekDaysRow = styled.tr`
+`;
+
+const DatesRow = styled.tr`
+
 `;
 
