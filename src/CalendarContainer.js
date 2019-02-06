@@ -12,10 +12,9 @@ const CalendarContainer = ({year, month, days, dates, handleNext, handlePrev}) =
                     <NextButton onClick={handleNext}>Next</NextButton>
                 </CalendarCaption>
                 <tbody>
-                    {days}
+                    <tr>{days}</tr>
                     {dates}
                 </tbody>
-
             </CalendarTable>
         </Calendar>
     )

@@ -13,21 +13,16 @@
 // }
 
 export function whatDateDoesTheMonthStartOn(year, monthDigit){
-    // get whatDateDoesTheMonthStartOn by supplying new Date (this.state.year, this.state.monthDigit)
-
-    // let firstOfMonth = (new Date(year, monthDigit)).setDate(1);
     let firstOfMonth = new Date(year, monthDigit);
     const firstDayOfMonthAsInt = firstOfMonth.getDay();
     return firstDayOfMonthAsInt;
 }
 
-
-
-
 export function createWeeks(daysInThisMonth, dayItStartsOn){
     let thisMonth = [];
     let thisWeek = [];
 
+    
     for(let i = 0; i < dayItStartsOn; i++) {
         thisWeek.push(null);
     }
