@@ -88,7 +88,7 @@ class App extends Component {
       dates.push(i);
     }
     
-    dates = createWeeks(dates.length, whatDateDoesTheMonthStartOn(this.state.today)); //the second arg here is the issue? 
+    dates = createWeeks(dates.length, whatDateDoesTheMonthStartOn(this.state.year, this.state.monthDigit)); //the second arg here is the issue? 
 
     let calendarWeeks = dates.map((week, i) => {
       return (
@@ -98,7 +98,7 @@ class App extends Component {
       )
     })
     
-    calendarWeeks.push(<div>STARTS ON: {whatDateDoesTheMonthStartOn(this.state.today)}</div>)
+    calendarWeeks.push(<div>STARTS ON: {whatDateDoesTheMonthStartOn(this.state.year, this.state.monthDigit)}</div>)
 
     return (
       <div className="App">

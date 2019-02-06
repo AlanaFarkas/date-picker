@@ -1,16 +1,26 @@
-export function whatDateDoesTheMonthStartOn(theDate){
-    // set firstOfMonth to given DATE OBJECT
-    let firstOfMonth = theDate;
+// export function whatDateDoesTheMonthStartOn(theDate){
+//     // set firstOfMonth to given DATE OBJECT
+//     let firstOfMonth = theDate;
 
-    // set firstOfMonth (aka theDate) to be the actual first day of the given month
-    firstOfMonth = firstOfMonth.setDate(1);
+//     // set firstOfMonth (aka theDate) to be the actual first day of the given month
+//     firstOfMonth = firstOfMonth.setDate(1);
 
-    // set firstDayOfMonthAsInt to the day of the week the first of the month fell on; ex: Friday = 5
-    const firstDayOfMonthAsInt = (new Date(firstOfMonth)).getDay();
+//     // set firstDayOfMonthAsInt to the day of the week the first of the month fell on; ex: Friday = 5
+//     const firstDayOfMonthAsInt = (new Date(firstOfMonth)).getDay();
 
-    // return number; ex: 5 for Friday
+//     // return number; ex: 5 for Friday
+//     return firstDayOfMonthAsInt;
+// }
+
+export function whatDateDoesTheMonthStartOn(year, monthDigit){
+    // get whatDateDoesTheMonthStartOn by supplying new Date (this.state.year, this.state.monthDigit)
+
+    // let firstOfMonth = (new Date(year, monthDigit)).setDate(1);
+    let firstOfMonth = new Date(year, monthDigit);
+    const firstDayOfMonthAsInt = firstOfMonth.getDay();
     return firstDayOfMonthAsInt;
 }
+
 
 
 
