@@ -12,7 +12,7 @@ const CalendarContainer = ({year, month, days, dates, handleNext, handlePrev}) =
                     <NextButton onClick={handleNext}>Next</NextButton>
                 </CalendarCaption>
                 <tbody>
-                    <tr>{days}</tr>
+                    <Weekdays>{days}</Weekdays>
                     {dates}
                 </tbody>
             </CalendarTable>
@@ -32,10 +32,11 @@ const Calendar = styled.div`
 
 const CalendarTable = styled.table`
     width: 100%;
+    table-layout: fixed;
 `;
 
 const PrevButton = styled.button`
-  float: left;
+    float: left;
 `;
 
 const NextButton = styled.button`
@@ -50,6 +51,10 @@ const CalendarMonthYear = styled.div`
     font-size: 18px;
     text-align: center;
     display: inline-block;
+    font-weight: bold;
+`;
+
+const Weekdays = styled.tr`
     font-weight: bold;
 `;
 

@@ -93,7 +93,7 @@ class App extends Component {
     let calendarWeeks = dates.map((week, i) => {
       return (
         <tr key={i}>
-          {week.map(number => <td key={i}>{number}</td>)}
+          {week.map(number => <DateCells key={i}>{number}</DateCells>)}
         </tr>
       )
     })
@@ -135,5 +135,9 @@ const CalendarImg = styled.img`
 `;
 
 const WeekDayData = styled.td`
+  border: 1px blue solid;
+`;
 
+const DateCells = styled.td`
+  border: 1px green solid;
 `;
