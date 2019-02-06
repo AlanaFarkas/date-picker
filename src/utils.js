@@ -5,8 +5,8 @@ export function whatDateDoesTheMonthStartOn(theDate){
     return firstOfMonthAsInt;
 }
 
-export function chunkIt(numberOfDaysInThisMonth, dayItStartsOn){
-    let wholeMonth = [];
+export function createWeeks(numberOfDaysInThisMonth, dayItStartsOn){
+    let completeMonth = [];
     let thisWeek = [];
 
     for(let i = 0; i < dayItStartsOn; i++) {
@@ -16,15 +16,15 @@ export function chunkIt(numberOfDaysInThisMonth, dayItStartsOn){
     for(let j = 1; j <= numberOfDaysInThisMonth; j++){
         thisWeek.push(j);
         if(thisWeek.length === 7) {
-            wholeMonth.push(thisWeek);
+            completeMonth.push(thisWeek);
             thisWeek = [];
         }
     }
     
     if (thisWeek.length > 0){
-        wholeMonth.push(thisWeek);
+        completeMonth.push(thisWeek);
     }
 
-    return wholeMonth;
+    return completeMonth;
 
 }

@@ -5,7 +5,7 @@ import Input from './Input'
 import styled from 'styled-components';
 import CalendarContainer from './CalendarContainer';
 import { ALL_DAYS, ALL_MONTHS } from './constants';
-import { whatDateDoesTheMonthStartOn,chunkIt } from './utils';
+import { whatDateDoesTheMonthStartOn, createWeeks } from './utils';
 
 
 class App extends Component {
@@ -88,7 +88,7 @@ class App extends Component {
       dates.push(i);
     }
     
-    dates = chunkIt(dates.length, whatDateDoesTheMonthStartOn(this.state.today));
+    dates = createWeeks(dates.length, whatDateDoesTheMonthStartOn(this.state.today));
 
     let calendarWeeks = dates.map((date, i) => {
       return (
