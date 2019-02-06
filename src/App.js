@@ -89,7 +89,6 @@ class App extends Component {
     }
     
     dates = createWeeks(dates.length, whatDateDoesTheMonthStartOn(this.state.year, this.state.monthDigit)); 
-    console.log(dates);
     
     let calendarWeeks = dates.map((week, i) => {
       return (
@@ -99,8 +98,6 @@ class App extends Component {
       )
     })
    
-    calendarWeeks.push(<div>STARTS ON: {whatDateDoesTheMonthStartOn(this.state.year, this.state.monthDigit)}</div>)
-
     return (
       <div className="App">
       <h1>Choose a date</h1>
