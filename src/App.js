@@ -135,14 +135,6 @@ const CalendarImg = styled.img`
   top: 3px;
 `;
 
-const WeekDiv = styled.td`
-  border: 2px blue solid;
-`;
-
-const DayDiv = styled.div`
-
-`;
-
 const WeekDayData = styled.td`
 
 `;

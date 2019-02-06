@@ -50,10 +50,4 @@ const TableHeading = styled.th`
     font-size: 16px;
 `;
 
-const WeekDaysRow = styled.tr`
-`;
-
-const DatesRow = styled.tr`
-
-`;
 

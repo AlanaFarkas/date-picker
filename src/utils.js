@@ -15,7 +15,7 @@ export function chunkIt(numberOfDaysInThisMonth, dayItStartsOn){
 
     for(let j = 1; j <= numberOfDaysInThisMonth; j++){
         thisWeek.push(j);
-        if(thisWeek.length == 7) {
+        if(thisWeek.length === 7) {
             wholeMonth.push(thisWeek);
             thisWeek = [];
         }
