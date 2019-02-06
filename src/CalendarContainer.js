@@ -6,14 +6,11 @@ const CalendarContainer = ({year, month, days, dates, handleNext, handlePrev}) =
     return (
         <Calendar>
             <CalendarTable>
-                <thead>
-                    <tr>
-                        <PrevButton onClick={handlePrev}>Prev</PrevButton>
-                        <TableHeading>{month}</TableHeading>
-                        <TableHeading>{year}</TableHeading>
-                        <NextButton onClick={handleNext}>Next</NextButton>
-                    </tr>
-                </thead>
+                <CalendarCaption>
+                    <PrevButton onClick={handlePrev}>Prev</PrevButton>
+                    <CalendarMonthYear>{month} {year}</CalendarMonthYear>
+                    <NextButton onClick={handleNext}>Next</NextButton>
+                </CalendarCaption>
                 <tbody>
                     {days}
                     {dates}
@@ -38,16 +35,23 @@ const CalendarTable = styled.table`
     width: 100%;
 `;
 
-const PrevButton = styled.th`
-  
+const PrevButton = styled.button`
+  float: left;
 `;
 
-const NextButton = styled.th`
-    
+const NextButton = styled.button`
+    float: right
 `;
 
-const TableHeading = styled.th`
-    font-size: 16px;
+const CalendarCaption = styled.caption`
+    margin-bottom: 20px;
+`;
+
+const CalendarMonthYear = styled.div`
+    font-size: 18px;
+    text-align: center;
+    display: inline-block;
+    font-weight: bold;
 `;
 
 
