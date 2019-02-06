@@ -135,9 +135,10 @@ const CalendarImg = styled.img`
 `;
 
 const WeekDayData = styled.td`
-  border: 1px blue solid;
+  padding-bottom: 20px;
 `;
 
 const DateCells = styled.td`
   border: 1px green solid;
+  height: 50px;
 `;

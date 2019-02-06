@@ -25,7 +25,7 @@ export default CalendarContainer;
 const Calendar = styled.div`
     border: 1px red solid;
     border-radius: 5px;
-    width: 600px;
+    width: 700px;
     padding: 20px;
     margin: auto;
 `;
