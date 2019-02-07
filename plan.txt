@@ -4,3 +4,5 @@ Create new date object from the selection and setState with it
 Add leap year logic
 
 DRY up code
+
+WRITE TESTS!
