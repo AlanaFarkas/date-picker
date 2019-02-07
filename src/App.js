@@ -118,7 +118,6 @@ class App extends Component {
           dates={calendarWeeks}
           handleNext={this.handleNext} 
           handlePrev={this.handlePrev} 
-          handleSelectDate = {this.handleSelectDate}
           /> 
       : null}      
       </div>
