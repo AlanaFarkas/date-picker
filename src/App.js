@@ -105,12 +105,18 @@ class App extends Component {
 
     let humanWeekday = this.state.selectedDate.getDay();
     humanWeekday = this.state.weekdays[humanWeekday];
-    let humanDate = this.state.selectedDate.getDate();
-    let humanMonth = this.state.displayedMonth;
+    const humanDate = this.state.selectedDate.getDate();
+    // const humanMonth = this.state.displayedMonth;
+    let humanMonth = this.state.selectedDate.getMonth();
+    humanMonth = this.state.months[humanMonth];
+    
+
+    console.log(humanWeekday);
+    console.log(humanMonth);
+    console.log(humanDate);
+
 
     let semanticSelectedDate = <div>{humanWeekday}, {humanMonth} {humanDate}, {this.state.year}</div>
-
-    // console.log(humanWeekday + humanMonth + humanDate + this.state.year);
    
     return (
       <div className="App">
