@@ -102,10 +102,20 @@ class App extends Component {
         </tr>
       )
     })
+
+    let humanWeekday = this.state.selectedDate.getDay();
+    humanWeekday = this.state.weekdays[humanWeekday];
+    let humanDate = this.state.selectedDate.getDate();
+    let humanMonth = this.state.displayedMonth;
+
+    let semanticSelectedDate = <div>{humanWeekday}, {humanMonth} {humanDate}, {this.state.year}</div>
+
+    // console.log(humanWeekday + humanMonth + humanDate + this.state.year);
    
     return (
       <div className="App">
       <h1>Choose a date</h1>
+      <h2>{semanticSelectedDate}</h2>
       <InputContainerDiv>      
         <Input />
         <CalendarImg onClick={this.showCalendar} src={calendar_icon} />
