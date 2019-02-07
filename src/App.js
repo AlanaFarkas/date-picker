@@ -93,7 +93,7 @@ class App extends Component {
     let calendarWeeks = dates.map((week, i) => {
       return (
         <tr key={i}>
-          {week.map(number => <DateCells key={i}>{number}</DateCells>)}
+          {week.map((number, i) => <DateCells key={i}>{number}</DateCells>)}
         </tr>
       )
     })
