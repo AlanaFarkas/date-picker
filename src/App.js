@@ -77,8 +77,8 @@ class App extends Component {
     }
   }
 
-  handleSelectDate = (id) => {
-    console.log('clicked', id);
+  handleSelectDate = (date) => {
+    this.setState({selectedDate: createDateObjectFromSelectedDate(this.state.year, this.state.monthDigit, date)})
   }
 
   
