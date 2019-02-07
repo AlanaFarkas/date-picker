@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const CalendarContainer = ({year, month, days, dates, handleNext, handlePrev}) => {
+const CalendarContainer = ({year, month, days, dates, handleNext, handlePrev, handleSelectDate}) => {
 
     return (
         <Calendar>

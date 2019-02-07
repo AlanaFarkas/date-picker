@@ -18,6 +18,11 @@ export function whatDateDoesTheMonthStartOn(year, monthDigit){
     return firstDayOfMonthAsInt;
 }
 
+export function createDateObjectFromSelectedDate(year, monthDigit, date) {
+    let selectedDate = new Date(year, monthDigit, date);
+    return selectedDate
+}
+
 export function createWeeks(daysInThisMonth, dayItStartsOn){
     let thisMonth = [];
     let thisWeek = [];
