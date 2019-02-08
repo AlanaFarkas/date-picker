@@ -86,7 +86,6 @@ class App extends Component {
   render() {    
 
     const leapYear = isThisALeapYear(this.state.year);
-    console.log(leapYear);
 
     const dayStrings = this.state.weekdays.map((day, i) => {
       return <WeekDayData key={i}>{day}</WeekDayData>
