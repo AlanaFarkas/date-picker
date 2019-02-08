@@ -83,10 +83,6 @@ class App extends Component {
     }
   }
 
-  handleHover = (date) => {
-    console.log(date);
-  }
-  
   render() {    
     const dayStrings = this.state.weekdays.map((day, i) => {
       return <WeekDayData key={i}>{day}</WeekDayData>
@@ -104,7 +100,7 @@ class App extends Component {
       
       return (
         <tr key={i}>
-          {week.map((number, i) => <DateCells dates={this.props.calendarWeeks} onMouseOver ={() => this.handleHover(number)} onClick={() => this.handleSelectDate(number)} key={i}>{number}</DateCells> )}
+          {week.map((number, i) => <DateCells dates={this.props.calendarWeeks} onClick={() => this.handleSelectDate(number)} key={i}>{number}</DateCells> )}
         </tr>
       )
     })
@@ -162,7 +158,7 @@ const DateCells = styled.td`
   color: #01224b;
   height: 50px;
   &:hover {
-    background-color: #01224b;
+    background-color: ${props => props.children != null ? '#01224b;;' : '#ffffff'}
     color: #ffffff;
   }
   `;
