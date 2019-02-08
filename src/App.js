@@ -80,7 +80,6 @@ class App extends Component {
   handleSelectDate = (date) => {
     this.setState({selectedDate: createDateObjectFromSelectedDate(this.state.year, this.state.monthDigit, date)})
   }
-
   
   render() {    
     const dayStrings = this.state.weekdays.map((day, i) => {
@@ -151,6 +150,11 @@ const WeekDayData = styled.td`
 `;
 
 const DateCells = styled.td`
-  border: 1px green solid;
+  background-color: #fce94b;
+  color: #01224b;
   height: 50px;
+  &:hover {
+    background-color: #01224b;
+    color: #ffffff;
+  }
 `;
