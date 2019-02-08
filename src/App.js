@@ -78,7 +78,13 @@ class App extends Component {
   }
 
   handleSelectDate = (date) => {
-    this.setState({selectedDate: createDateObjectFromSelectedDate(this.state.year, this.state.monthDigit, date)})
+    if(date != null) {
+      this.setState({selectedDate: createDateObjectFromSelectedDate(this.state.year, this.state.monthDigit, date)})
+    }
+  }
+
+  handleHover = (date) => {
+    console.log(date);
   }
   
   render() {    
@@ -95,9 +101,10 @@ class App extends Component {
     dates = createWeeks(dates.length, whatDateDoesTheMonthStartOn(this.state.year, this.state.monthDigit)); 
     
     let calendarWeeks = dates.map((week, i) => {
+      
       return (
         <tr key={i}>
-          {week.map((number, i) => <DateCells onClick={() => this.handleSelectDate(number)} key={i}>{number}</DateCells>)}
+          {week.map((number, i) => <DateCells dates={this.props.calendarWeeks} onMouseOver ={() => this.handleHover(number)} onClick={() => this.handleSelectDate(number)} key={i}>{number}</DateCells> )}
         </tr>
       )
     })
@@ -107,6 +114,7 @@ class App extends Component {
     let humanMonth = this.state.months[this.state.selectedDate.getMonth()];
     let humanYear = this.state.selectedDate.getFullYear();
     let semanticSelectedDate = <div>{humanWeekday}, {humanMonth} {humanDate}, {humanYear}</div>
+
    
     return (
       <div className="App">
@@ -150,11 +158,11 @@ const WeekDayData = styled.td`
 `;
 
 const DateCells = styled.td`
-  background-color: #fce94b;
+  background-color: ${props => props.children != null ? '#fce94b;' : '#ffffff'}
   color: #01224b;
   height: 50px;
   &:hover {
     background-color: #01224b;
     color: #ffffff;
   }
-`;
+  `;
