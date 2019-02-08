@@ -1,40 +1,24 @@
-// export function whatDateDoesTheMonthStartOn(theDate){
-//     // set firstOfMonth to given DATE OBJECT
-//     let firstOfMonth = theDate;
 
-//     // set firstOfMonth (aka theDate) to be the actual first day of the given month
-//     firstOfMonth = firstOfMonth.setDate(1);
-
-//     // set firstDayOfMonthAsInt to the day of the week the first of the month fell on; ex: Friday = 5
-//     const firstDayOfMonthAsInt = (new Date(firstOfMonth)).getDay();
-
-//     // return number; ex: 5 for Friday
-//     return firstDayOfMonthAsInt;
-// }
-
-export function isThisALeapYear(year) {
-
+export const isThisALeapYear = (year) => {
     let leapYear = year % 4 === 0 && year % 100 !== 0 ? true : false;
-    return leapYear;
+    return leapYear
 }
 
-console.log(isThisALeapYear(2089));
-
-export function whatDateDoesTheMonthStartOn(year, monthDigit){
+export const whatDateDoesTheMonthStartOn = (year, monthDigit) => {
     let firstOfMonth = new Date(year, monthDigit);
     const firstDayOfMonthAsInt = firstOfMonth.getDay();
     return firstDayOfMonthAsInt;
 }
 
-export function createDateObjectFromSelectedDate(year, monthDigit, date) {
+
+export const createDateObjectFromSelectedDate = (year, monthDigit, date) => {
     let selectedDate = new Date(year, monthDigit, date);
     return selectedDate
 }
 
-export function createWeeks(daysInThisMonth, dayItStartsOn){
+export const createWeeks = (daysInThisMonth, dayItStartsOn) => {
     let thisMonth = [];
     let thisWeek = [];
-
     
     for(let i = 0; i < dayItStartsOn; i++) {
         thisWeek.push(null);
