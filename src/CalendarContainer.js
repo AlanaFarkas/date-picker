@@ -23,8 +23,6 @@ const CalendarContainer = ({year, month, days, dates, handleNext, handlePrev}) =
 export default CalendarContainer;
 
 const Calendar = styled.div`
-    border: 1px red solid;
-    border-radius: 5px;
     width: 700px;
     padding: 20px;
     margin: auto;
