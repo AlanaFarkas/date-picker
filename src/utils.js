@@ -12,6 +12,14 @@
 //     return firstDayOfMonthAsInt;
 // }
 
+export function isThisALeapYear(year) {
+
+    let leapYear = year % 4 === 0 && year % 100 !== 0 ? true : false;
+    return leapYear;
+}
+
+console.log(isThisALeapYear(2089));
+
 export function whatDateDoesTheMonthStartOn(year, monthDigit){
     let firstOfMonth = new Date(year, monthDigit);
     const firstDayOfMonthAsInt = firstOfMonth.getDay();
