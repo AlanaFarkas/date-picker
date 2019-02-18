@@ -5,7 +5,7 @@ import Input from './Input'
 import styled from 'styled-components';
 import CalendarContainer from './CalendarContainer';
 import { ALL_DAYS, ALL_MONTHS } from './constants';
-import { isThisALeapYear, whatDateDoesTheMonthStartOn, createWeeks, createDateObjectFromSelectedDate } from './utils';
+import { isThisALeapYear, addLeapDay, whatDateDoesTheMonthStartOn, createWeeks, createDateObjectFromSelectedDate } from './utils';
 
 
 class App extends Component {
@@ -83,11 +83,18 @@ class App extends Component {
     }
   }
 
-  render() {    
+  addLeapDay = (year, monthDigit) => {
+    if(isThisALeapYear(year) && monthDigit === 1) {
+        return this.setState({displayedDates: this.state.displayedDates + 1})
+    }
+}
 
-    const leapYear = isThisALeapYear(this.state.year);
 
-    const dayStrings = this.state.weekdays.map((day, i) => {
+render() {    
+
+  addLeapDay(this.state.year, this.state.monthDigit) ? console.log('leap') : console.log('no leap');
+
+  const dayStrings = this.state.weekdays.map((day, i) => {
       return <WeekDayData key={i}>{day}</WeekDayData>
     });
     

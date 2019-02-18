@@ -4,6 +4,12 @@ export const isThisALeapYear = (year) => {
     return leapYear
 }
 
+export const addLeapDay = (year, monthDigit) => {
+    if(isThisALeapYear(year) && monthDigit === 1) {
+        return true;
+    }
+}
+
 export const whatDateDoesTheMonthStartOn = (year, monthDigit) => {
     let firstOfMonth = new Date(year, monthDigit);
     const firstDayOfMonthAsInt = firstOfMonth.getDay();
