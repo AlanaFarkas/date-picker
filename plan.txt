@@ -1,5 +1,4 @@
-
-Add leap year logic
+showCal() on input Click
 
 DRY up code
 

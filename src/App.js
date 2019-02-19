@@ -124,7 +124,7 @@ render() {
       <h1>Choose a date</h1>
       <h2>{semanticSelectedDate}</h2>
       <InputContainerDiv>      
-        <Input />
+        <Input handleClick={this.showCalendar} />
         <CalendarImg onClick={this.showCalendar} src={calendar_icon} />
       </InputContainerDiv>
       {this.state.openCalendar ? 
