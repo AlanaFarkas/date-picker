@@ -83,17 +83,15 @@ class App extends Component {
     }
   }
 
-  addLeapDay = (year, monthDigit) => {
-    if(isThisALeapYear(year) && monthDigit === 1) {
-        return this.setState({displayedDates: this.state.displayedDates + 1})
-    }
-}
+//   addLeapDay = (year, monthDigit) => {
+//     if(isThisALeapYear(year) && monthDigit === 1) {
+//         return this.setState({displayedDates: this.state.displayedDates + 1})
+//     }
+// }
 
 
-render() {    
-
-  addLeapDay(this.state.year, this.state.monthDigit) ? console.log('leap') : console.log('no leap');
-
+render() {  
+ 
   const dayStrings = this.state.weekdays.map((day, i) => {
       return <WeekDayData key={i}>{day}</WeekDayData>
     });
@@ -104,10 +102,9 @@ render() {
       dates.push(i);
     }
     
-    dates = createWeeks(dates.length, whatDateDoesTheMonthStartOn(this.state.year, this.state.monthDigit)); 
+    dates = createWeeks(dates.length, whatDateDoesTheMonthStartOn(this.state.year, this.state.monthDigit), this.state.year, this.state.monthDigit); 
     
-    let calendarWeeks = dates.map((week, i) => {
-      
+    let calendarWeeks = dates.map((week, i) => {      
       return (
         <tr key={i}>
           {week.map((number, i) => <DateCells dates={this.props.calendarWeeks} onClick={() => this.handleSelectDate(number)} key={i}>{number}</DateCells> )}

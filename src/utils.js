@@ -8,7 +8,7 @@ export const addLeapDay = (year, monthDigit) => {
     if(isThisALeapYear(year) && monthDigit === 1) {
         return true;
     }
-}
+} // USE THIS ONE
 
 export const whatDateDoesTheMonthStartOn = (year, monthDigit) => {
     let firstOfMonth = new Date(year, monthDigit);
@@ -22,13 +22,15 @@ export const createDateObjectFromSelectedDate = (year, monthDigit, date) => {
     return selectedDate
 }
 
-export const createWeeks = (daysInThisMonth, dayItStartsOn) => {
+export const createWeeks = (daysInThisMonth, dayItStartsOn, year, monthDigit) => {
     let thisMonth = [];
     let thisWeek = [];
+
+    daysInThisMonth = addLeapDay(year, monthDigit) ? daysInThisMonth +=1 : daysInThisMonth; 
     
     for(let i = 0; i < dayItStartsOn; i++) {
         thisWeek.push(null);
-    }
+    }    
 
     for(let j = 1; j <= daysInThisMonth; j++){
         thisWeek.push(j);
