@@ -5,7 +5,7 @@ import Input from './Input'
 import styled from 'styled-components';
 import CalendarContainer from './CalendarContainer';
 import { ALL_DAYS, ALL_MONTHS } from './constants';
-import { isThisALeapYear, addLeapDay, whatDateDoesTheMonthStartOn, createWeeks, createDateObjectFromSelectedDate } from './utils';
+import { whatDateDoesTheMonthStartOn, createWeeks, createDateObjectFromSelectedDate } from './utils';
 
 
 class App extends Component {
