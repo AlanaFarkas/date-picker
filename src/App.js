@@ -13,24 +13,18 @@ export default class App extends Component {
   constructor(props) {
     super(props)
 
-    const today = new Date();
-    let monthDigit = today.getMonth();
-    let monthArray = Object.keys(ALL_MONTHS);
-    let datesArray = Object.values(ALL_MONTHS);
-    let year = today.getFullYear();
-
     this.state = {
       weekdays: ALL_DAYS,
-      months: monthArray,
-      dates: datesArray,
+      months: Object.keys(ALL_MONTHS),
+      dates: Object.values(ALL_MONTHS),
       openCalendar: false,
-      today: today,
-      selectedDate: today,
-      monthDigit: monthDigit,
-      displayedMonth: monthArray[monthDigit],
-      displayedDates: datesArray[monthDigit],
-      year: year,
-    }    
+      today: new Date(),
+      selectedDate: new Date(),
+      monthDigit: new Date().getMonth(),
+      displayedMonth: Object.keys(ALL_MONTHS)[new Date().getMonth()],
+      displayedDates: Object.values(ALL_MONTHS)[new Date().getMonth()],
+      year: new Date().getFullYear(),
+    }
   }
 
   showCalendar = () => {
