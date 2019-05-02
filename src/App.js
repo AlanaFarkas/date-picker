@@ -27,6 +27,7 @@ export default class App extends Component {
     }
   }
 
+
   showCalendar = () => {
     return this.setState(prevState => ({
       openCalendar: !prevState.openCalendar
@@ -77,6 +78,20 @@ export default class App extends Component {
     }
   }
 
+renderHeaderInfo() {
+  let humanWeekday = this.state.weekdays[this.state.selectedDate.getDay()];
+  let humanDate = this.state.selectedDate.getDate();
+  let humanMonth = this.state.months[this.state.selectedDate.getMonth()];
+  let humanYear = this.state.selectedDate.getFullYear();
+  let semanticSelectedDate = <div>{humanWeekday}, {humanMonth} {humanDate}, {humanYear}</div>
+  return (
+    <React.Fragment>
+      <h1>Choose a date</h1>
+      <h2>{semanticSelectedDate}</h2>
+    </React.Fragment>
+  )
+}
+
 
 render() {
 
@@ -100,17 +115,11 @@ render() {
       )
     })
 
-    let humanWeekday = this.state.weekdays[this.state.selectedDate.getDay()];
-    let humanDate = this.state.selectedDate.getDate();
-    let humanMonth = this.state.months[this.state.selectedDate.getMonth()];
-    let humanYear = this.state.selectedDate.getFullYear();
-    let semanticSelectedDate = <div>{humanWeekday}, {humanMonth} {humanDate}, {humanYear}</div>
 
 
     return (
       <div className="App">
-      <h1>Choose a date</h1>
-      <h2>{semanticSelectedDate}</h2>
+      {this.renderHeaderInfo()}
       <InputContainerDiv>
         <Input handleClick={this.showCalendar} />
         <CalendarImg onClick={this.showCalendar} src={calendar_icon} />
