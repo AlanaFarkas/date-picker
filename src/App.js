@@ -8,11 +8,11 @@ import { ALL_DAYS, ALL_MONTHS } from './constants';
 import { whatDateDoesTheMonthStartOn, createWeeks, createDateObjectFromSelectedDate } from './utils';
 
 
-class App extends Component {
-  
+export default class App extends Component {
+
   constructor(props) {
     super(props)
-    
+
     const today = new Date();
     let monthDigit = today.getMonth();
     let monthArray = Object.keys(ALL_MONTHS);
@@ -83,12 +83,6 @@ class App extends Component {
     }
   }
 
-//   addLeapDay = (year, monthDigit) => {
-//     if(isThisALeapYear(year) && monthDigit === 1) {
-//         return this.setState({displayedDates: this.state.displayedDates + 1})
-//     }
-// }
-
 
 render() {  
  
@@ -141,8 +135,6 @@ render() {
     );
   }
 }
-
-export default App;
 
 const InputContainerDiv = styled.div`
   display: inline-block;
