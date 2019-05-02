@@ -106,16 +106,16 @@ maybeRenderCalendar() {
     year,
   } = this.state;
 
-
-
-
   let dates = [];
 
   for(var i = 1; i < this.state.displayedDates + 1; i++) {
     dates.push(i);
   }
 
-  dates = createWeeks(dates.length, whatDateDoesTheMonthStartOn(this.state.year, this.state.monthDigit), this.state.year, this.state.monthDigit); 
+  dates = createWeeks(
+      dates.length,
+      whatDateDoesTheMonthStartOn(this.state.year, this.state.monthDigit), this.state.year, this.state.monthDigit
+    );
 
   let calendarWeeks = dates.map((week, i) => {
     return (
@@ -140,7 +140,6 @@ maybeRenderCalendar() {
       />
   )
 }
-
 
 render() {
     return (
