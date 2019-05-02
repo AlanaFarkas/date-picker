@@ -99,31 +99,37 @@ renderDaysOfTheWeek() {
   return dayStrings;
 }
 
+renderCalendarWeeks() {
+  const { year, monthDigit, displayedDates } = this.state;
+  const { calendarWeeks } = this.props;
+  let dates = [];
+
+  for(var i = 1; i < displayedDates + 1; i++) {
+    dates.push(i);
+  }
+
+  dates = createWeeks(
+      dates.length,
+      whatDateDoesTheMonthStartOn(year, monthDigit), year, monthDigit
+    );
+
+  const renderedCalendarWeeks = dates.map((week, i) => {
+    return (
+      <tr key={i}>
+        {week.map((number, i) =>
+          <DateCells dates={calendarWeeks} onClick={() => this.handleSelectDate(number)} key={i}>{number}</DateCells> )}
+      </tr>
+    )
+  })
+  return renderedCalendarWeeks;
+}
+
 maybeRenderCalendar() {
   const {
     openCalendar,
     displayedMonth,
     year,
   } = this.state;
-
-  let dates = [];
-
-  for(var i = 1; i < this.state.displayedDates + 1; i++) {
-    dates.push(i);
-  }
-
-  dates = createWeeks(
-      dates.length,
-      whatDateDoesTheMonthStartOn(this.state.year, this.state.monthDigit), this.state.year, this.state.monthDigit
-    );
-
-  let calendarWeeks = dates.map((week, i) => {
-    return (
-      <tr key={i}>
-        {week.map((number, i) => <DateCells dates={this.props.calendarWeeks} onClick={() => this.handleSelectDate(number)} key={i}>{number}</DateCells> )}
-      </tr>
-    )
-  })
 
   if (!openCalendar) {
     return null;
@@ -134,7 +140,7 @@ maybeRenderCalendar() {
       month={displayedMonth}
       year={year}
       days={this.renderDaysOfTheWeek()}
-      dates={calendarWeeks}
+      dates={this.renderCalendarWeeks()}
       handleNext={this.handleNext}
       handlePrev={this.handlePrev}
       />
