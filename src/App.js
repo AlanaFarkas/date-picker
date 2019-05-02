@@ -14,7 +14,6 @@ export default class App extends Component {
     super(props)
 
     this.state = {
-      weekdays: ALL_DAYS,
       months: Object.keys(ALL_MONTHS),
       dates: Object.values(ALL_MONTHS),
       openCalendar: false,
@@ -79,7 +78,7 @@ export default class App extends Component {
   }
 
 renderHeaderInfo() {
-  const humanWeekday = this.state.weekdays[this.state.selectedDate.getDay()];
+  const humanWeekday = ALL_DAYS[this.state.selectedDate.getDay()];
   const humanDate = this.state.selectedDate.getDate();
   const humanMonth = this.state.months[this.state.selectedDate.getMonth()];
   const humanYear = this.state.selectedDate.getFullYear();
@@ -93,6 +92,13 @@ renderHeaderInfo() {
   )
 }
 
+renderDaysOfTheWeek() {
+  const dayStrings = ALL_DAYS.map((day, i) => {
+    return <WeekDayData key={i}>{day}</WeekDayData>
+  });
+  return dayStrings;
+}
+
 maybeRenderCalendar() {
   const {
     openCalendar,
@@ -100,9 +106,7 @@ maybeRenderCalendar() {
     year,
   } = this.state;
 
-  const dayStrings = this.state.weekdays.map((day, i) => {
-    return <WeekDayData key={i}>{day}</WeekDayData>
-  });
+
 
 
   let dates = [];
@@ -129,7 +133,7 @@ maybeRenderCalendar() {
     <CalendarContainer
       month={displayedMonth}
       year={year}
-      days={dayStrings}
+      days={this.renderDaysOfTheWeek()}
       dates={calendarWeeks}
       handleNext={this.handleNext}
       handlePrev={this.handlePrev}
@@ -147,16 +151,6 @@ render() {
         <CalendarImg onClick={this.showCalendar} src={calendar_icon} />
       </InputContainerDiv>
       {this.maybeRenderCalendar()}
-      {/* {this.state.openCalendar ?
-        <CalendarContainer
-          month={this.state.displayedMonth}
-          year={this.state.year}
-          days={dayStrings}
-          dates={calendarWeeks}
-          handleNext={this.handleNext}
-          handlePrev={this.handlePrev}
-          />
-      : null} */}
       </div>
     );
   }
