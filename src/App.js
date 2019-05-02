@@ -84,21 +84,21 @@ export default class App extends Component {
   }
 
 
-render() {  
- 
+render() {
+
   const dayStrings = this.state.weekdays.map((day, i) => {
       return <WeekDayData key={i}>{day}</WeekDayData>
     });
-    
+
     let dates = [];
-    
+
     for(var i = 1; i < this.state.displayedDates + 1; i++) {
       dates.push(i);
     }
-    
+
     dates = createWeeks(dates.length, whatDateDoesTheMonthStartOn(this.state.year, this.state.monthDigit), this.state.year, this.state.monthDigit); 
-    
-    let calendarWeeks = dates.map((week, i) => {      
+
+    let calendarWeeks = dates.map((week, i) => {
       return (
         <tr key={i}>
           {week.map((number, i) => <DateCells dates={this.props.calendarWeeks} onClick={() => this.handleSelectDate(number)} key={i}>{number}</DateCells> )}
@@ -112,25 +112,25 @@ render() {
     let humanYear = this.state.selectedDate.getFullYear();
     let semanticSelectedDate = <div>{humanWeekday}, {humanMonth} {humanDate}, {humanYear}</div>
 
-   
+
     return (
       <div className="App">
       <h1>Choose a date</h1>
       <h2>{semanticSelectedDate}</h2>
-      <InputContainerDiv>      
+      <InputContainerDiv>
         <Input handleClick={this.showCalendar} />
         <CalendarImg onClick={this.showCalendar} src={calendar_icon} />
       </InputContainerDiv>
-      {this.state.openCalendar ? 
-        <CalendarContainer 
-          month={this.state.displayedMonth} 
+      {this.state.openCalendar ?
+        <CalendarContainer
+          month={this.state.displayedMonth}
           year={this.state.year}
-          days={dayStrings} 
+          days={dayStrings}
           dates={calendarWeeks}
-          handleNext={this.handleNext} 
-          handlePrev={this.handlePrev} 
-          /> 
-      : null}      
+          handleNext={this.handleNext}
+          handlePrev={this.handlePrev}
+          />
+      : null}
       </div>
     );
   }
