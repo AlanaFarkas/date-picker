@@ -152,7 +152,7 @@ render() {
       <div className="App">
       {this.renderHeaderInfo()}
       <InputContainerDiv>
-        <Input handleClick={this.showCalendar} />
+        <Input onClick={this.showCalendar} />
         <CalendarImg onClick={this.showCalendar} src={calendar_icon} />
       </InputContainerDiv>
       {this.maybeRenderCalendar()}
