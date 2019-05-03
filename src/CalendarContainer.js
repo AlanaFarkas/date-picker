@@ -78,10 +78,10 @@ export default class CalendarContainer extends Component {
 
         const renderedCalendarWeeks = dates.map((week, i) => {
             return (
-                <tr key={i}>
+                <Days key={i}>
                     {week.map((number, i) =>
                     <DateCells dates={calendarWeeks} onClick={() => this.handleSelectDate(number)} key={i}>{number}</DateCells> )}
-                </tr>
+                </Days>
             );
         });
 
@@ -90,7 +90,7 @@ export default class CalendarContainer extends Component {
 
     renderDaysOfTheWeek() {
         const dayStrings = ALL_DAYS.map((day, i) => {
-          return <WeekDayData key={i}>{day}</WeekDayData>
+          return <DaysOfTheWeek key={i}>{day}</DaysOfTheWeek>
         });
 
         return dayStrings;
@@ -114,15 +114,13 @@ export default class CalendarContainer extends Component {
                 </HeaderDate>
                 <Calendar>
                     <CalendarTable>
-                        <CalendarCaption>
+                        <CalendarHeader>
                             <PrevArrowImage onClick={this.handlePrev} src={PrevArrow} />
                             <CalendarMonthYear>{displayedMonth} {year}</CalendarMonthYear>
                             <NextArrowImage onClick={this.handleNext} src={NextArrow} />
-                        </CalendarCaption>
-                        <tbody>
+                        </CalendarHeader>
                             <Weekdays>{this.renderDaysOfTheWeek()}</Weekdays>
                             {this.renderCalendarWeeks()}
-                        </tbody>
                     </CalendarTable>
                 </Calendar>
             </React.Fragment>
@@ -140,9 +138,8 @@ const Calendar = styled.div`
     margin: 30px auto 0;
 `;
 
-const CalendarTable = styled.table`
+const CalendarTable = styled.div`
     width: 100%;
-    table-layout: fixed;
 `;
 
 const PrevArrowImage = styled.img`
@@ -154,30 +151,43 @@ const NextArrowImage = styled(PrevArrowImage)`
     float: right
 `;
 
-const CalendarCaption = styled.caption`
-    margin-bottom: 20px;
+const CalendarHeader = styled.div`
+    margin-bottom: 20px;    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 `;
 
 const CalendarMonthYear = styled.div`
     font-size: 18px;
-    text-align: center;
-    display: inline-block;
     font-weight: bold;
 `;
 
-const Weekdays = styled.tr`
-    font-weight: bold;
+const Weekdays = styled.div`
+    display: flex;
 `;
 
-const WeekDayData = styled.td`
+const Days = styled.div`
+    border: 1px blue solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+`;
+
+const DaysOfTheWeek = styled.div`
   padding-bottom: 20px;
+  font-weight: bold;
+  width: 100%;
 `;
 
-const DateCells = styled.td`
+const DateCells = styled.div`
   background-color: ${props => props.children != null ? '#fce94b;' : '#ffffff;'}
   color: #01224b;
+  font-weight: bold;
+//   width: 100%;
+    width: ${props => props.children === null ? '100px' : '100px'}
   height: 50px;
-  cursor: ${props => props.children != null && 'pointer'}
+  cursor: ${props => props.children != null && 'pointer;'}
   transition: background-color 0.25s, color 0.25s;
   &:hover {
     background-color: ${props => props.children != null ? '#01224b;' : '#ffffff;'}
