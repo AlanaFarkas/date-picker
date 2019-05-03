@@ -1,31 +1,41 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
+import { ALL_DAYS } from './constants';
 
-const CalendarContainer = ({year, month, days, dates, handleNext, handlePrev}) => {
+export default class CalendarContainer extends Component {
 
-    return (
-        <Calendar>
-            <CalendarTable>
-                <CalendarCaption>
-                    <PrevButton onClick={handlePrev}>Prev</PrevButton>
-                    <CalendarMonthYear>{month} {year}</CalendarMonthYear>
-                    <NextButton onClick={handleNext}>Next</NextButton>
-                </CalendarCaption>
-                <tbody>
-                    <Weekdays>{days}</Weekdays>
-                    {dates}
-                </tbody>
-            </CalendarTable>
-        </Calendar>
-    )
+    renderDaysOfTheWeek() {
+        const dayStrings = ALL_DAYS.map((day, i) => {
+          return <WeekDayData key={i}>{day}</WeekDayData>
+        });
+        return dayStrings;
+      }
+
+    render() {
+        const {year, month, days, dates, handleNext, handlePrev} = this.props;
+        return (
+            <Calendar>
+                <CalendarTable>
+                    <CalendarCaption>
+                        <PrevButton onClick={handlePrev}>Prev</PrevButton>
+                        <CalendarMonthYear>{month} {year}</CalendarMonthYear>
+                        <NextButton onClick={handleNext}>Next</NextButton>
+                    </CalendarCaption>
+                    <tbody>
+                        <Weekdays>{this.renderDaysOfTheWeek()}</Weekdays>
+                        {dates}
+                    </tbody>
+                </CalendarTable>
+            </Calendar>
+        )
+    }
+
 }
-
-export default CalendarContainer;
 
 const Calendar = styled.div`
     width: 700px;
     padding: 20px;
-    margin: auto;
+    margin: 30px auto 0;
 `;
 
 const CalendarTable = styled.table`
@@ -54,6 +64,10 @@ const CalendarMonthYear = styled.div`
 
 const Weekdays = styled.tr`
     font-weight: bold;
+`;
+
+const WeekDayData = styled.td`
+  padding-bottom: 20px;
 `;
 
 

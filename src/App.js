@@ -91,12 +91,12 @@ renderHeaderInfo() {
   )
 }
 
-renderDaysOfTheWeek() {
-  const dayStrings = ALL_DAYS.map((day, i) => {
-    return <WeekDayData key={i}>{day}</WeekDayData>
-  });
-  return dayStrings;
-}
+// renderDaysOfTheWeek() {
+//   const dayStrings = ALL_DAYS.map((day, i) => {
+//     return <WeekDayData key={i}>{day}</WeekDayData>
+//   });
+//   return dayStrings;
+// }
 
 renderCalendarWeeks() {
   const { year, monthDigit, displayedDates } = this.state;
@@ -138,7 +138,6 @@ maybeRenderCalendar() {
     <CalendarContainer
       month={displayedMonth}
       year={year}
-      days={this.renderDaysOfTheWeek()}
       dates={this.renderCalendarWeeks()}
       handleNext={this.handleNext}
       handlePrev={this.handlePrev}
@@ -175,10 +174,6 @@ const CalendarImg = styled.img`
   position: absolute;
   right: 3px;
   top: 3px;
-`;
-
-const WeekDayData = styled.td`
-  padding-bottom: 20px;
 `;
 
 const DateCells = styled.td`
