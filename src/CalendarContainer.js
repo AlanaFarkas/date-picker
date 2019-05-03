@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { ALL_DAYS, ALL_MONTHS } from './constants';
 import { whatDateDoesTheMonthStartOn, createWeeks, createDateObjectFromSelectedDate } from './utils';
+import PrevArrow from './assets/l_arrow.svg'
+import NextArrow from './assets/r_arrow.svg'
 
 export default class CalendarContainer extends Component {
 
@@ -113,9 +115,9 @@ export default class CalendarContainer extends Component {
                 <Calendar>
                     <CalendarTable>
                         <CalendarCaption>
-                            <PrevButton onClick={this.handlePrev}>Prev</PrevButton>
+                            <PrevArrowImage onClick={this.handlePrev} src={PrevArrow} />
                             <CalendarMonthYear>{displayedMonth} {year}</CalendarMonthYear>
-                            <NextButton onClick={this.handleNext}>Next</NextButton>
+                            <NextArrowImage onClick={this.handleNext} src={NextArrow} />
                         </CalendarCaption>
                         <tbody>
                             <Weekdays>{this.renderDaysOfTheWeek()}</Weekdays>
@@ -143,11 +145,12 @@ const CalendarTable = styled.table`
     table-layout: fixed;
 `;
 
-const PrevButton = styled.button`
+const PrevArrowImage = styled.img`
     float: left;
+    width: 30px;
 `;
 
-const NextButton = styled.button`
+const NextArrowImage = styled(PrevArrowImage)`
     float: right
 `;
 
