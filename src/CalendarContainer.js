@@ -175,6 +175,7 @@ const DateCells = styled.td`
   color: #01224b;
   height: 50px;
   cursor: ${props => props.children != null && 'pointer'}
+  transition: background-color 0.25s, color 0.25s;
   &:hover {
     background-color: ${props => props.children != null ? '#01224b;' : '#ffffff;'}
     color: #ffffff;
