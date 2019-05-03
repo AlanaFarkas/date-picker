@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import calendar_icon from './assets/calendar_icon.svg';
 import Input from './Input'
 import styled from 'styled-components';
@@ -149,17 +148,22 @@ maybeRenderCalendar() {
 
 render() {
     return (
-      <div className="App">
-      {this.renderHeaderInfo()}
-      <InputContainerDiv>
-        <Input onClick={this.showCalendar} />
-        <CalendarImg onClick={this.showCalendar} src={calendar_icon} />
-      </InputContainerDiv>
-      {this.maybeRenderCalendar()}
-      </div>
+      <AppContainer>
+        {this.renderHeaderInfo()}
+        <InputContainerDiv>
+          <Input onClick={this.showCalendar} />
+          <CalendarImg onClick={this.showCalendar} src={calendar_icon} />
+        </InputContainerDiv>
+        {this.maybeRenderCalendar()}
+      </AppContainer>
     );
   }
+
 }
+
+const AppContainer = styled.div`
+  text-align: center;
+`;
 
 const InputContainerDiv = styled.div`
   display: inline-block;
@@ -186,4 +190,4 @@ const DateCells = styled.td`
     background-color: ${props => props.children != null ? '#01224b;' : '#ffffff;'}
     color: #ffffff;
   }
-  `;
+`;
