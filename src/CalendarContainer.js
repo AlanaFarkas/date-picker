@@ -168,7 +168,6 @@ const Weekdays = styled.div`
 `;
 
 const Days = styled.div`
-    border: 1px blue solid;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -184,8 +183,8 @@ const DateCells = styled.div`
   background-color: ${props => props.children != null ? '#fce94b;' : '#ffffff;'}
   color: #01224b;
   font-weight: bold;
-//   width: 100%;
-    width: ${props => props.children === null ? '100px' : '100px'}
+  box-shadow:inset 0px 0px 0px 1px #ffffff;
+  width: 100px;
   height: 50px;
   cursor: ${props => props.children != null && 'pointer;'}
   transition: background-color 0.25s, color 0.25s;
