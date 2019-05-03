@@ -80,7 +80,7 @@ export default class CalendarContainer extends Component {
             return (
                 <Days key={i}>
                     {week.map((number, i) =>
-                    <DateCells dates={calendarWeeks} onClick={() => this.handleSelectDate(number)} key={i}>{number}</DateCells> )}
+                    <DateCells dates={calendarWeeks} onClick={() => this.handleSelectDate(number)} key={i}><DateDigit>{number}</DateDigit></DateCells> )}
                 </Days>
             );
         });
@@ -185,13 +185,18 @@ const DateCells = styled.div`
   font-weight: bold;
   box-shadow:inset 0px 0px 0px 1px #ffffff;
   width: 100px;
-  height: 50px;
+  height: 75px;
   cursor: ${props => props.children != null && 'pointer;'}
   transition: background-color 0.25s, color 0.25s;
   &:hover {
     background-color: ${props => props.children != null ? '#01224b;' : '#ffffff;'}
     color: #ffffff;
   }
+`;
+
+const DateDigit = styled.div`
+  text-align: right;
+  margin: 5px 10px 0 0;
 `;
 
 
