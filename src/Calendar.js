@@ -139,6 +139,7 @@ const CalendarContainer = styled.div`
 const PrevArrowImage = styled.img`
     float: left;
     width: 30px;
+    cursor: pointer;
 `;
 
 const NextArrowImage = styled(PrevArrowImage)`
