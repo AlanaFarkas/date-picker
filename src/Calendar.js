@@ -5,7 +5,7 @@ import { whatDateDoesTheMonthStartOn, createWeeks, createDateObjectFromSelectedD
 import PrevArrow from './assets/l_arrow.svg'
 import NextArrow from './assets/r_arrow.svg'
 
-export default class CalendarContainer extends Component {
+export default class Calendar extends Component {
 
     state = {
         year: new Date().getFullYear(),
@@ -64,7 +64,7 @@ export default class CalendarContainer extends Component {
 
     renderCalendarWeeks() {
         const { year, monthDigit, displayedDates } = this.state;
-        const { calendarWeeks } = this.props;
+        const { calendarWeeks, number } = this.props;
         let dates = [];
 
         for(var i = 1; i < displayedDates + 1; i++) {
@@ -80,7 +80,7 @@ export default class CalendarContainer extends Component {
             return (
                 <Days key={i}>
                     {week.map((number, i) =>
-                    <DateCells dates={calendarWeeks} onClick={() => this.handleSelectDate(number)} key={i}><DateDigit>{number}</DateDigit></DateCells> )}
+                        <DateCells number={number} dates={calendarWeeks} onClick={() => this.handleSelectDate(number)} key={i}><DateDigit>{number}</DateDigit></DateCells> )}
                 </Days>
             );
         });
@@ -112,17 +112,15 @@ export default class CalendarContainer extends Component {
                 <HeaderDate>
                     {this.renderChosenDate()}
                 </HeaderDate>
-                <Calendar>
-                    <CalendarTable>
-                        <CalendarHeader>
-                            <PrevArrowImage onClick={this.handlePrev} src={PrevArrow} />
-                            <CalendarMonthYear>{displayedMonth} {year}</CalendarMonthYear>
-                            <NextArrowImage onClick={this.handleNext} src={NextArrow} />
-                        </CalendarHeader>
-                            <Weekdays>{this.renderDaysOfTheWeek()}</Weekdays>
-                            {this.renderCalendarWeeks()}
-                    </CalendarTable>
-                </Calendar>
+                <CalendarContainer>
+                    <CalendarHeader>
+                        <PrevArrowImage onClick={this.handlePrev} src={PrevArrow} />
+                        <CalendarMonthYear>{displayedMonth} {year}</CalendarMonthYear>
+                        <NextArrowImage onClick={this.handleNext} src={NextArrow} />
+                    </CalendarHeader>
+                    <Weekdays>{this.renderDaysOfTheWeek()}</Weekdays>
+                    {this.renderCalendarWeeks()}
+                </CalendarContainer>
             </React.Fragment>
         )
     }
@@ -132,14 +130,10 @@ export default class CalendarContainer extends Component {
 const HeaderDate = styled.div`
 `;
 
-const Calendar = styled.div`
+const CalendarContainer = styled.div`
     width: 700px;
     padding: 20px;
     margin: 30px auto 0;
-`;
-
-const CalendarTable = styled.div`
-    width: 100%;
 `;
 
 const PrevArrowImage = styled.img`
@@ -152,7 +146,8 @@ const NextArrowImage = styled(PrevArrowImage)`
 `;
 
 const CalendarHeader = styled.div`
-    margin-bottom: 20px;    display: flex;
+    margin-bottom: 20px;
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -180,16 +175,16 @@ const DaysOfTheWeek = styled.div`
 `;
 
 const DateCells = styled.div`
-  background-color: ${props => props.children != null ? '#fce94b;' : '#ffffff;'}
+  background-color: ${props => props.number != null ? '#fce94b;' : '#ffffff;'}
   color: #01224b;
   font-weight: bold;
   box-shadow:inset 0px 0px 0px 1px #ffffff;
   width: 100px;
   height: 75px;
-  cursor: ${props => props.children != null && 'pointer;'}
+  cursor: ${props => props.number != null && 'pointer;'}
   transition: background-color 0.25s, color 0.25s;
   &:hover {
-    background-color: ${props => props.children != null ? '#01224b;' : '#ffffff;'}
+    background-color: ${props => props.number != null ? '#01224b;' : '#ffffff;'}
     color: #ffffff;
   }
 `;

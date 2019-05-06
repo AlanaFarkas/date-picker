@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import calendarIcon from './assets/calendar_icon.svg';
 import Input from './Input'
 import styled from 'styled-components';
-import CalendarContainer from './CalendarContainer';
+import Calendar from './Calendar';
 
 export default class App extends Component {
 
@@ -24,7 +24,7 @@ export default class App extends Component {
     }
 
     return (
-      <CalendarContainer />
+      <Calendar />
     );
 
   }
