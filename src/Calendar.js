@@ -153,8 +153,7 @@ const CalendarHeader = styled.div`
     align-items: center;
 `;
 
-const CalendarMonthYear = styled.div`
-    font-size: 18px;
+const CalendarMonthYear = styled.h2`
     font-weight: bold;
 `;
 
