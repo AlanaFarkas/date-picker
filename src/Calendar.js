@@ -64,7 +64,6 @@ export default class Calendar extends Component {
 
     renderCalendarWeeks() {
         const { year, monthDigit, displayedDates } = this.state;
-        const { calendarWeeks, number } = this.props;
         let dates = [];
 
         for(var i = 1; i < displayedDates + 1; i++) {
@@ -80,7 +79,7 @@ export default class Calendar extends Component {
             return (
                 <Days key={i}>
                     {week.map((number, i) =>
-                        <DateCells number={number} dates={calendarWeeks} onClick={() => this.handleSelectDate(number)} key={i}><DateDigit>{number}</DateDigit></DateCells> )}
+                        <DateCells number={number} onClick={() => this.handleSelectDate(number)} key={i}><DateDigit>{number}</DateDigit></DateCells> )}
                 </Days>
             );
         });

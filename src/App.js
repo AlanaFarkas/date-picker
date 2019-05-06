@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Transition } from 'react-transition-group';
 import calendarIcon from './assets/calendar_icon.svg';
 import Input from './Input'
 import styled from 'styled-components';
