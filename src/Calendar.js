@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 import { fadeIn, fadeOut } from 'react-animations';
 import { ALL_DAYS, ALL_MONTHS } from './constants';
 import { whatDateDoesTheMonthStartOn, createWeeks, createDateObjectFromSelectedDate } from './utils';
