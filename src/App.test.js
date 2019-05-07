@@ -2,17 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { expect, shallow } from 'enzyme';
-import CalendarContainer from './CalendarContainer';
+import Calendar from './Calendar';
 
-// it('renders without crashing', () => {
-//   const div = document.createElement('div');
-//   ReactDOM.render(<App />, div);
-//   ReactDOM.unmountComponentAtNode(div);
-// });
-
-describe('<CalendarContainer />', () => {
-  it('renders a <CalendarComponent /> when the calendar icon is clicked', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<CalendarContainer />, div);
+describe('App.js', () => {
+  it('does not render calendar component on page load', () => {
+    const wrapper = shallow(<App />)
+    console.log(wrapper.debug());
+    expect(wrapper.exists(<Calendar />)).to.equal(false);
   })
+
+  // describe('<Calendar />', () => {
+  //   it('renders a <Calendar /> when the calendar icon is clicked', () => {
+  //     const wrapper = shallow(<Calendar />)
+  //     console.log(wrapper.debug());
+  //   })
+  // })
 })
+
