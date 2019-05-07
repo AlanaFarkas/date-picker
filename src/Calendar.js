@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import styled, { keyframes, css } from 'styled-components';
-import { fadeIn, fadeOut } from 'react-animations';
+import styled, { keyframes } from 'styled-components';
+import { fadeIn } from 'react-animations';
 import { ALL_DAYS, ALL_MONTHS } from './constants';
 import { whatDateDoesTheMonthStartOn, createWeeks, createDateObjectFromSelectedDate } from './utils';
 import PrevArrow from './assets/l_arrow.svg'
 import NextArrow from './assets/r_arrow.svg'
 
 const calendarFadeIn = keyframes `${fadeIn}`;
-const calendarFadeOut = keyframes `${fadeOut}`;
 
 export default class Calendar extends Component {
 
@@ -109,13 +108,13 @@ export default class Calendar extends Component {
     }
 
     render() {
-        const {year, displayedMonth} = this.state;
+        const { year, displayedMonth } = this.state;
         return (
             <React.Fragment>
-                <HeaderDate>
-                    {this.renderChosenDate()}
-                </HeaderDate>
                 <CalendarContainer>
+                    <HeaderDate>
+                        {this.renderChosenDate()}
+                    </HeaderDate>
                     <CalendarHeader>
                         <PrevArrowImage onClick={this.handlePrev} src={PrevArrow} />
                         <CalendarMonthYear>{displayedMonth} {year}</CalendarMonthYear>
