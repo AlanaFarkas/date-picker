@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { fadeInDown } from 'react-animations';
 import { ALL_DAYS, ALL_MONTHS } from './constants';
 import { whatDateDoesTheMonthStartOn, createWeeks, createDateObjectFromSelectedDate } from './utils';
 import PrevArrow from './assets/l_arrow.svg'
 import NextArrow from './assets/r_arrow.svg'
+
+const calendarFadeInDown = keyframes `${fadeInDown}`;
 
 export default class Calendar extends Component {
 
@@ -130,6 +133,7 @@ const HeaderDate = styled.div`
 `;
 
 const CalendarContainer = styled.div`
+    animation: 1s ${calendarFadeInDown}
     width: 700px;
     padding: 20px;
     margin: 30px auto 0;
