@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Transition } from 'react-transition-group';
+import CSSTransitionGroup from 'react-transition-group';
 import calendarIcon from './assets/calendar_icon.svg';
 import Input from './Input'
 import styled from 'styled-components';
@@ -25,7 +25,12 @@ export default class App extends Component {
     }
 
     return (
+      <
+      transitionName="example"
+      transitionEnterTimeout={500}
+      transitionLeaveTimeout={300}>
       <Calendar />
+    </>
     );
 
   }
