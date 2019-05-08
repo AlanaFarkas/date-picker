@@ -16,57 +16,78 @@ export default class Calendar extends Component {
         displayedDates: Object.values(ALL_MONTHS)[new Date().getMonth()],
         selectedDate: new Date(),
         months: Object.keys(ALL_MONTHS),
-        today: new Date(),
         displayedMonth: Object.keys(ALL_MONTHS)[new Date().getMonth()],
         dates: Object.values(ALL_MONTHS),
     }
 
     handleNext = () => {
-        if(this.state.monthDigit === 11) {
+        const {
+            monthDigit,
+            months,
+            dates,
+        } = this.state;
+
+        if(monthDigit === 11) {
           return this.setState(prevState => ({
             monthDigit: 0,
-            displayedMonth: this.state.months[0],
+            displayedMonth: months[0],
             year: prevState.year + 1
           }))
         } else {
           return this.setState(prevState => ({
             monthDigit: prevState.monthDigit + 1,
-            displayedMonth: this.state.months[prevState.monthDigit + 1],
-            displayedDates: this.state.dates[prevState.monthDigit + 1]
+            displayedMonth: months[prevState.monthDigit + 1],
+            displayedDates: dates[prevState.monthDigit + 1]
           }))
         }
       }
 
     handlePrev = () => {
-        if(this.state.monthDigit > 11) {
+        const {
+            monthDigit,
+            months,
+            dates,
+        } = this.state;
+
+        if(monthDigit > 11) {
             return this.setState(prevState => ({
             monthDigit: 0,
-            displayedMonth: this.state.months[this.state.monthDigit],
+            displayedMonth: months[monthDigit],
             year: prevState.year - 1
             }))
-        } else if(this.state.monthDigit === 0) {
+        } else if(monthDigit === 0) {
             return this.setState(prevState => ({
             monthDigit: 11,
-            displayedMonth: this.state.months[11],
+            displayedMonth: months[11],
             year: prevState.year - 1
             }))
         } else {
             return this.setState(prevState => ({
             monthDigit: prevState.monthDigit - 1,
-            displayedMonth: this.state.months[prevState.monthDigit - 1],
-            displayedDates: this.state.dates[prevState.monthDigit - 1]
+            displayedMonth: months[prevState.monthDigit - 1],
+            displayedDates: dates[prevState.monthDigit - 1]
             }))
         }
     }
 
     handleSelectDate = (date) => {
+        const {
+            year,
+            monthDigit,
+        } = this.state;
+
         if(date != null) {
-            this.setState({selectedDate: createDateObjectFromSelectedDate(this.state.year, this.state.monthDigit, date)})
+            this.setState({selectedDate: createDateObjectFromSelectedDate(year, monthDigit, date)})
         }
     }
 
     renderCalendarWeeks() {
-        const { year, monthDigit, displayedDates } = this.state;
+        const {
+            year,
+            monthDigit,
+            displayedDates
+        } = this.state;
+
         let dates = [];
 
         for(var i = 1; i < displayedDates + 1; i++) {
@@ -106,16 +127,25 @@ export default class Calendar extends Component {
     }
 
     renderChosenDate() {
-        const humanWeekday = ALL_DAYS[this.state.selectedDate.getDay()];
-        const humanDate = this.state.selectedDate.getDate();
-        const humanMonth = this.state.months[this.state.selectedDate.getMonth()];
-        const humanYear = this.state.selectedDate.getFullYear();
+        const {
+            selectedDate,
+            months,
+        } = this.state;
+
+        const humanWeekday = ALL_DAYS[selectedDate.getDay()];
+        const humanDate = selectedDate.getDate();
+        const humanMonth = months[selectedDate.getMonth()];
+        const humanYear = selectedDate.getFullYear();
         const semanticSelectedDate = `${humanWeekday}, ${humanMonth} ${humanDate}, ${humanYear}`
-        return <h2>{semanticSelectedDate}</h2>
+        return <h2>Chosen date: {semanticSelectedDate}</h2>
     }
 
     render() {
-        const { year, displayedMonth } = this.state;
+        const {
+            year,
+            displayedMonth
+        } = this.state;
+
         return (
             <React.Fragment>
                 <CalendarContainer data-test="calendar-container">
