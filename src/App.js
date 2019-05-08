@@ -34,9 +34,7 @@ export default class App extends Component {
       <AppContainer data-test="app-container">
         <AppHeader data-test="app-header">Choose a date</AppHeader>
         <InputContainerDiv>
-          <Input
-            onClick={this.showCalendar}
-          />
+          <Input />
           <CalendarImg
             data-test="calendar-icon"
             onClick={this.showCalendar}
