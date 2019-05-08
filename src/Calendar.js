@@ -82,7 +82,14 @@ export default class Calendar extends Component {
             return (
                 <Days key={i}>
                     {week.map((number, i) =>
-                        <DateCells number={number} onClick={() => this.handleSelectDate(number)} key={i}><DateDigit>{number}</DateDigit></DateCells> )}
+                        <DateCells
+                            data-test={`date-cell-${number}`}
+                            number={number}
+                            onClick={() => this.handleSelectDate(number)}
+                            key={i}>
+                            <DateDigit>{number}</DateDigit>
+                        </DateCells>
+                    )}
                 </Days>
             );
         });
@@ -92,7 +99,7 @@ export default class Calendar extends Component {
 
     renderDaysOfTheWeek() {
         const dayStrings = ALL_DAYS.map((day, i) => {
-          return <DaysOfTheWeek key={i}>{day}</DaysOfTheWeek>
+          return <DaysOfTheWeek data-test={`day-of-the-week-${day}`} key={i}>{day}</DaysOfTheWeek>
         });
 
         return dayStrings;
@@ -111,16 +118,24 @@ export default class Calendar extends Component {
         const { year, displayedMonth } = this.state;
         return (
             <React.Fragment>
-                <CalendarContainer>
-                    <HeaderDate>
+                <CalendarContainer data-test="calendar-container">
+                    <HeaderDate data-test="header-date">
                         {this.renderChosenDate()}
                     </HeaderDate>
-                    <CalendarHeader>
-                        <PrevArrowImage onClick={this.handlePrev} src={PrevArrow} />
+                    <CalendarHeader data-test="calendar-header">
+                        <PrevArrowImage
+                        data-test="prev-arrow-icon"
+                        onClick={this.handlePrev}
+                        src={PrevArrow}
+                    />
                         <CalendarMonthYear>{displayedMonth} {year}</CalendarMonthYear>
-                        <NextArrowImage onClick={this.handleNext} src={NextArrow} />
+                        <NextArrowImage
+                            data-test="next-arrow-icon"
+                            onClick={this.handleNext}
+                            src={NextArrow}
+                        />
                     </CalendarHeader>
-                    <Weekdays>{this.renderDaysOfTheWeek()}</Weekdays>
+                    <Weekdays data-test="weekdays">{this.renderDaysOfTheWeek()}</Weekdays>
                     {this.renderCalendarWeeks()}
                 </CalendarContainer>
             </React.Fragment>

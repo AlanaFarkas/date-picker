@@ -31,11 +31,17 @@ export default class App extends Component {
 
   render() {
     return (
-      <AppContainer>
-        <h1>Choose a date</h1>
+      <AppContainer data-test="app-container">
+        <AppHeader data-test="app-header">Choose a date</AppHeader>
         <InputContainerDiv>
-          <Input onClick={this.showCalendar} />
-          <CalendarImg onClick={this.showCalendar} src={calendarIcon} />
+          <Input
+            onClick={this.showCalendar}
+          />
+          <CalendarImg
+            data-test="calendar-icon"
+            onClick={this.showCalendar}
+            src={calendarIcon}
+          />
         </InputContainerDiv>
         {this.maybeRenderCalendar()}
       </AppContainer>
@@ -45,6 +51,9 @@ export default class App extends Component {
 
 const AppContainer = styled.div`
   text-align: center;
+`;
+
+const AppHeader = styled.h1`
 `;
 
 const InputContainerDiv = styled.div`

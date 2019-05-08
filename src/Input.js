@@ -3,7 +3,10 @@ import styled from 'styled-components';
 
 const Input = () => {
     return (
-        <TimeDateInput type='text' />
+        <TimeDateInput
+            data-test='input-field'
+            type='text'
+        />
     )
 }
 
