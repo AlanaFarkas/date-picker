@@ -11,28 +11,35 @@ describe('App.js', () => {
     expect(wrapper.findByDataTest('app-header').at(0).text()).toEqual('Choose a date');
   });
 
+  it('does not render calendar component on page load', () => {
+    const wrapper = mountWithCustomWrappers(<App />);
+    expect(wrapper.findByDataTest('calendar-container').exists()).toBe(false);
+  });
+
   it('renders the input component', () => {
     const wrapper = mountWithCustomWrappers(<App />);
     expect(wrapper.findByDataTest('input-field').exists()).toBe(true);
-  })
+  });
 
   it('renders the calendar image icon component', () => {
     const wrapper = mountWithCustomWrappers(<App />);
     expect(wrapper.findByDataTest('calendar-icon').exists()).toBe(true);
-  })
+  });
 
   it('renders the date picker when the calendar image icon is clicked', () => {
       const wrapper = mountWithCustomWrappers(<App />);
       const calendarImg = wrapper.findByDataTest('calendar-icon').at(0);
       calendarImg.click();
       expect(wrapper.findByDataTest('calendar-container').at(0).exists()).toBe(true)
-  })
-
-  it('does not render calendar component on page load', () => {
-    const wrapper = mountWithCustomWrappers(<App />);
-    expect(wrapper.findByDataTest('calendar-container').exists()).toBe(false);
   });
 
+  it('renders today\'s date when date picker is first rendered', () => {
+    //TODO
+  });
+
+  it('renders the correct date based on which date is clicked', () => {
+    //TODO
+  });
 
 })
 
