@@ -33,7 +33,7 @@ export default class App extends Component {
   render() {
     return (
       <AppContainer data-test="app-container">
-        <AppHeaderRow debug justify={"center"} data-test="app-header">
+        <AppHeaderRow justify={"center"} data-test="app-header">
           <AppHeaderColumn>
             <HeaderText>Choose a date</HeaderText>
             <InputContainerDiv>
