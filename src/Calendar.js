@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components';
+import { Container, Row, Col } from 'react-grid-system';
 import { fadeIn } from 'react-animations';
 import { ALL_DAYS, ALL_MONTHS } from './constants';
 import { whatDateDoesTheMonthStartOn, createWeeks, createDateObjectFromSelectedDate } from './utils';
@@ -152,19 +153,21 @@ export default class Calendar extends Component {
                     <HeaderDate data-test="header-date">
                         {this.renderChosenDate()}
                     </HeaderDate>
-                    <CalendarHeader data-test="calendar-header">
-                        <PrevArrowImage
-                        data-test="prev-arrow-icon"
-                        onClick={this.handlePrev}
-                        src={PrevArrow}
-                    />
-                        <CalendarMonthYear>{displayedMonth} {year}</CalendarMonthYear>
-                        <NextArrowImage
-                            data-test="next-arrow-icon"
-                            onClick={this.handleNext}
-                            src={NextArrow}
+                    <CalendarHeaderRow debug>
+                        <CalendarHeader debug data-test="calendar-header">
+                            <PrevArrowImage
+                            data-test="prev-arrow-icon"
+                            onClick={this.handlePrev}
+                            src={PrevArrow}
                         />
-                    </CalendarHeader>
+                            <CalendarMonthYear>{displayedMonth} {year}</CalendarMonthYear>
+                            <NextArrowImage
+                                data-test="next-arrow-icon"
+                                onClick={this.handleNext}
+                                src={NextArrow}
+                            />
+                        </CalendarHeader>
+                    </CalendarHeaderRow>
                     <Weekdays data-test="weekdays">{this.renderDaysOfTheWeek()}</Weekdays>
                     {this.renderCalendarWeeks()}
                 </CalendarContainer>
@@ -177,11 +180,11 @@ export default class Calendar extends Component {
 const HeaderDate = styled.div`
 `;
 
-const CalendarContainer = styled.div`
+const CalendarContainer = styled(Container)`
     animation: 1s ${calendarFadeIn}
-    width: 700px;
     padding: 20px;
     margin: 30px auto 0;
+    border: 1px red solid;
 `;
 
 const PrevArrowImage = styled.img`
@@ -194,7 +197,9 @@ const NextArrowImage = styled(PrevArrowImage)`
     float: right
 `;
 
-const CalendarHeader = styled.div`
+const CalendarHeaderRow = styled(Row)``;
+
+const CalendarHeader = styled(Col)`
     margin-bottom: 20px;
     display: flex;
     flex-direction: row;
