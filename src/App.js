@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Container, Row, Col } from 'react-grid-system';
 import styled from 'styled-components';
 import calendarIcon from './assets/calendar_icon.svg';
 import Input from './Input'
@@ -32,26 +33,35 @@ export default class App extends Component {
   render() {
     return (
       <AppContainer data-test="app-container">
-        <AppHeader data-test="app-header">Choose a date</AppHeader>
-        <InputContainerDiv>
-          <Input />
-          <CalendarImg
-            data-test="calendar-icon"
-            onClick={this.showCalendar}
-            src={calendarIcon}
-          />
-        </InputContainerDiv>
+        <AppHeaderRow debug justify={"center"} data-test="app-header">
+          <AppHeaderColumn>
+            <HeaderText>Choose a date</HeaderText>
+            <InputContainerDiv>
+              <Input />
+              <CalendarImg
+                data-test="calendar-icon"
+                onClick={this.showCalendar}
+                src={calendarIcon}
+              />
+            </InputContainerDiv>
+          </AppHeaderColumn>
+        </AppHeaderRow>
         {this.maybeRenderCalendar()}
       </AppContainer>
     );
   }
 }
 
-const AppContainer = styled.div`
+const AppContainer = styled(Container)`
   text-align: center;
 `;
 
-const AppHeader = styled.h1`
+const AppHeaderRow = styled(Row)``;
+
+const AppHeaderColumn = styled(Col)``;
+
+const HeaderText = styled.h2`
+  text-align: center;
 `;
 
 const InputContainerDiv = styled.div`
