@@ -19,7 +19,7 @@ export default class Calendar extends Component {
         months: Object.keys(ALL_MONTHS),
         displayedMonth: Object.keys(ALL_MONTHS)[new Date().getMonth()],
         dates: Object.values(ALL_MONTHS),
-    }
+    };
 
     handleNext = () => {
         const {
@@ -121,9 +121,12 @@ export default class Calendar extends Component {
 
     renderDaysOfTheWeek() {
         const dayStrings = ALL_DAYS.map((day, i) => {
-          return <DaysOfTheWeek data-test={`day-of-the-week-${day}`} key={i}>{day}</DaysOfTheWeek>
+          return (
+            <Weekdays data-test="weekdays">
+                <DaysOfTheWeek data-test={`day-of-the-week-${day}`} key={i}>{day}</DaysOfTheWeek>
+            </Weekdays>
+          )
         });
-
         return dayStrings;
     }
 
@@ -138,7 +141,11 @@ export default class Calendar extends Component {
         const humanMonth = months[selectedDate.getMonth()];
         const humanYear = selectedDate.getFullYear();
         const semanticSelectedDate = `${humanWeekday}, ${humanMonth} ${humanDate}, ${humanYear}`
-        return <h2>Chosen date: {semanticSelectedDate}</h2>
+        return (
+            <HeaderDate data-test="header-date">
+                <h2>Chosen date: {semanticSelectedDate}</h2>
+            </HeaderDate>
+        )
     }
 
     render() {
@@ -150,11 +157,9 @@ export default class Calendar extends Component {
         return (
             <React.Fragment>
                 <CalendarContainer data-test="calendar-container">
-                    <HeaderDate data-test="header-date">
                         {this.renderChosenDate()}
-                    </HeaderDate>
-                    <CalendarHeaderRow debug>
-                        <CalendarHeader debug data-test="calendar-header">
+                    <CalendarHeaderRow>
+                        <CalendarHeader data-test="calendar-header">
                             <PrevArrowImage
                             data-test="prev-arrow-icon"
                             onClick={this.handlePrev}
@@ -168,7 +173,7 @@ export default class Calendar extends Component {
                             />
                         </CalendarHeader>
                     </CalendarHeaderRow>
-                    <Weekdays data-test="weekdays">{this.renderDaysOfTheWeek()}</Weekdays>
+                    {this.renderDaysOfTheWeek()}
                     {this.renderCalendarWeeks()}
                 </CalendarContainer>
             </React.Fragment>
