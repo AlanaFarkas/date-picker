@@ -108,8 +108,11 @@ export default class Calendar extends Component {
                             data-test={`date-cell-${number}`}
                             number={number}
                             onClick={() => this.handleSelectDate(number)}
-                            key={i}>
-                            <DateDigit>{number}</DateDigit>
+                            key={i}
+                        >
+                            <DateDigit>
+                                {number}
+                            </DateDigit>
                         </DateCells>
                     )}
                 </Days>
@@ -189,7 +192,6 @@ const CalendarContainer = styled(Container)`
     animation: 1s ${calendarFadeIn}
     padding: 20px;
     margin: 30px auto 0;
-    border: 1px red solid;
 `;
 
 const PrevArrowImage = styled.img`
@@ -221,10 +223,10 @@ const Weekdays = styled(Row)`
 `;
 
 const Days = styled(Row)`
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    border: 1px blue solid;
+    // display: flex;
+    // flex-direction: row;
+    // justify-content: flex-start;
+    border: 1px red solid;
 `;
 
 const DaysOfTheWeek = styled(Col)`
