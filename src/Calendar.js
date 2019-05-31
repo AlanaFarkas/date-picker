@@ -41,7 +41,7 @@ export default class Calendar extends Component {
             displayedDates: dates[prevState.monthDigit + 1]
           }))
         }
-      }
+    }
 
     handlePrev = () => {
         const {
