@@ -122,9 +122,7 @@ export default class Calendar extends Component {
     renderDaysOfTheWeek() {
         const dayStrings = ALL_DAYS.map((day, i) => {
           return (
-            <Weekdays data-test="weekdays">
                 <DaysOfTheWeek data-test={`day-of-the-week-${day}`} key={i}>{day}</DaysOfTheWeek>
-            </Weekdays>
           )
         });
         return dayStrings;
@@ -173,7 +171,9 @@ export default class Calendar extends Component {
                             />
                         </CalendarHeader>
                     </CalendarHeaderRow>
+                <Weekdays data-test="weekdays">
                     {this.renderDaysOfTheWeek()}
+                </Weekdays>
                     {this.renderCalendarWeeks()}
                 </CalendarContainer>
             </React.Fragment>
@@ -216,23 +216,24 @@ const CalendarMonthYear = styled.h2`
     font-weight: bold;
 `;
 
-const Weekdays = styled.div`
+const Weekdays = styled(Row)`
     display: flex;
 `;
 
-const Days = styled.div`
+const Days = styled(Row)`
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    border: 1px blue solid;
 `;
 
-const DaysOfTheWeek = styled.div`
+const DaysOfTheWeek = styled(Col)`
   padding-bottom: 20px;
   font-weight: bold;
   width: 100%;
 `;
 
-const DateCells = styled.div`
+const DateCells = styled(Col)`
   background-color: ${props => props.number != null ? '#fce94b;' : '#ffffff;'}
   color: #01224b;
   font-weight: bold;
