@@ -41,9 +41,16 @@ export const createWeeks = (daysInThisMonth, dayItStartsOn, year, monthDigit) =>
     }
     
     if (thisWeek.length > 0){
+        let x = thisWeek.length;
+        while (x < 7) {
+            thisWeek.push(null);
+            x++;
+        }
         thisMonth.push(thisWeek);
     }
 
     return thisMonth;
 
 }
+
+// I have an array that is 
