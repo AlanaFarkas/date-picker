@@ -4,10 +4,8 @@ import { Container, Row, Col } from 'react-grid-system';
 import { fadeIn } from 'react-animations';
 import { ALL_DAYS, ALL_MONTHS } from './constants';
 import { whatDateDoesTheMonthStartOn, createWeeks, createDateObjectFromSelectedDate } from './utils';
-import PrevArrow from './assets/l_arrow.svg'
-import NextArrow from './assets/r_arrow.svg'
-
-const calendarFadeIn = keyframes `${fadeIn}`;
+import { PrevArrow } from './assets/l_arrow.svg'
+import { NextArrow } from './assets/r_arrow.svg'
 
 export default class Calendar extends Component {
 
@@ -15,7 +13,7 @@ export default class Calendar extends Component {
         year: new Date().getFullYear(),
         monthDigit: new Date().getMonth(),
         displayedDates: Object.values(ALL_MONTHS)[new Date().getMonth()],
-        selectedDate: new Date(),
+        selectedDate: null,
         months: Object.keys(ALL_MONTHS),
         displayedMonth: Object.keys(ALL_MONTHS)[new Date().getMonth()],
         dates: Object.values(ALL_MONTHS),
@@ -125,7 +123,9 @@ export default class Calendar extends Component {
     renderDaysOfTheWeek() {
         const dayStrings = ALL_DAYS.map((day, i) => {
           return (
-                <DaysOfTheWeek data-test={`day-of-the-week-${day}`} key={i}>{day}</DaysOfTheWeek>
+                <DaysOfTheWeek data-test={`day-of-the-week-${day}`} key={i}>
+                    {day}
+                </DaysOfTheWeek>
           )
         });
         return dayStrings;
@@ -144,7 +144,9 @@ export default class Calendar extends Component {
         const semanticSelectedDate = `${humanWeekday}, ${humanMonth} ${humanDate}, ${humanYear}`
         return (
             <HeaderDate data-test="header-date">
-                <h2>Chosen date: {semanticSelectedDate}</h2>
+                <h2>
+                    Chosen date: {semanticSelectedDate}
+                </h2>
             </HeaderDate>
         )
     }
@@ -184,6 +186,8 @@ export default class Calendar extends Component {
     }
 
 }
+
+const calendarFadeIn = keyframes `${fadeIn}`;
 
 const HeaderDate = styled.div`
 `;
