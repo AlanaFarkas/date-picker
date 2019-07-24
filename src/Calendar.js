@@ -223,10 +223,6 @@ const Weekdays = styled(Row)`
 `;
 
 const Days = styled(Row)`
-    // display: flex;
-    // flex-direction: row;
-    // justify-content: flex-start;
-    border: 1px red solid;
 `;
 
 const DaysOfTheWeek = styled(Col)`
