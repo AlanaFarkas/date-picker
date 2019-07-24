@@ -1,0 +1,5 @@
+showCal() on input Click
+
+DRY up code
+
+WRITE TESTS!

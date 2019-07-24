@@ -1,31 +1,36 @@
-// export function whatDateDoesTheMonthStartOn(theDate){
-//     // set firstOfMonth to given DATE OBJECT
-//     let firstOfMonth = theDate;
 
-//     // set firstOfMonth (aka theDate) to be the actual first day of the given month
-//     firstOfMonth = firstOfMonth.setDate(1);
+export const isThisALeapYear = (year) => {
+    let leapYear = year % 4 === 0 && year % 100 !== 0 ? true : false;
+    return leapYear
+}
 
-//     // set firstDayOfMonthAsInt to the day of the week the first of the month fell on; ex: Friday = 5
-//     const firstDayOfMonthAsInt = (new Date(firstOfMonth)).getDay();
+export const addLeapDay = (year, monthDigit) => {
+    if(isThisALeapYear(year) && monthDigit === 1) {
+        return true;
+    }
+} // USE THIS ONE
 
-//     // return number; ex: 5 for Friday
-//     return firstDayOfMonthAsInt;
-// }
-
-export function whatDateDoesTheMonthStartOn(year, monthDigit){
+export const whatDateDoesTheMonthStartOn = (year, monthDigit) => {
     let firstOfMonth = new Date(year, monthDigit);
     const firstDayOfMonthAsInt = firstOfMonth.getDay();
     return firstDayOfMonthAsInt;
 }
 
-export function createWeeks(daysInThisMonth, dayItStartsOn){
+
+export const createDateObjectFromSelectedDate = (year, monthDigit, date) => {
+    let selectedDate = new Date(year, monthDigit, date);
+    return selectedDate
+}
+
+export const createWeeks = (daysInThisMonth, dayItStartsOn, year, monthDigit) => {
     let thisMonth = [];
     let thisWeek = [];
 
+    daysInThisMonth = addLeapDay(year, monthDigit) ? daysInThisMonth +=1 : daysInThisMonth; 
     
     for(let i = 0; i < dayItStartsOn; i++) {
         thisWeek.push(null);
-    }
+    }    
 
     for(let j = 1; j <= daysInThisMonth; j++){
         thisWeek.push(j);
@@ -36,9 +41,16 @@ export function createWeeks(daysInThisMonth, dayItStartsOn){
     }
     
     if (thisWeek.length > 0){
+        let x = thisWeek.length;
+        while (x < 7) {
+            thisWeek.push(null);
+            x++;
+        }
         thisMonth.push(thisWeek);
     }
 
     return thisMonth;
 
 }
+
+// I have an array that is 
