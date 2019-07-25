@@ -4,8 +4,8 @@ import { Container, Row, Col } from 'react-grid-system';
 import { fadeIn } from 'react-animations';
 import { ALL_DAYS, ALL_MONTHS } from './constants';
 import { whatDateDoesTheMonthStartOn, createWeeks, createDateObjectFromSelectedDate } from './utils';
-import { PrevArrow } from './assets/l_arrow.svg'
-import { NextArrow } from './assets/r_arrow.svg'
+import PrevArrow from './assets/l_arrow.svg'
+import NextArrow from './assets/r_arrow.svg'
 
 export default class Calendar extends Component {
 
@@ -75,9 +75,15 @@ export default class Calendar extends Component {
             monthDigit,
         } = this.state;
 
-        if(date != null) {
-            this.setState({selectedDate: createDateObjectFromSelectedDate(year, monthDigit, date)})
+        // if(date != null) {
+        //     this.setState({selectedDate: createDateObjectFromSelectedDate(year, monthDigit, date)})
+        // }
+
+        if ( date == null ) {
+            console.log('uh?')
         }
+
+        this.setState({selectedDate: createDateObjectFromSelectedDate(year, monthDigit, date)})
     }
 
     renderCalendarWeeks() {
@@ -137,18 +143,22 @@ export default class Calendar extends Component {
             months,
         } = this.state;
 
-        const humanWeekday = ALL_DAYS[selectedDate.getDay()];
-        const humanDate = selectedDate.getDate();
-        const humanMonth = months[selectedDate.getMonth()];
-        const humanYear = selectedDate.getFullYear();
-        const semanticSelectedDate = `${humanWeekday}, ${humanMonth} ${humanDate}, ${humanYear}`
-        return (
-            <HeaderDate data-test="header-date">
-                <h2>
-                    Chosen date: {semanticSelectedDate}
-                </h2>
-            </HeaderDate>
-        )
+        if(selectedDate != null) {
+
+            const humanWeekday = ALL_DAYS[selectedDate.getDay()];
+            const humanDate = selectedDate.getDate();
+            const humanMonth = months[selectedDate.getMonth()];
+            const humanYear = selectedDate.getFullYear();
+            const semanticSelectedDate = `${humanWeekday}, ${humanMonth} ${humanDate}, ${humanYear}`
+            return (
+                <HeaderDate data-test="header-date">
+                    <h2>
+                        Chosen date: {semanticSelectedDate}
+                    </h2>
+                </HeaderDate>
+            )
+        }
+
     }
 
     render() {
