@@ -183,8 +183,10 @@ export default class Calendar extends Component {
                         />
                     </CalendarHeader>
                 </CalendarHeaderRow>
-                {this.renderDaysOfTheWeek()}
-                {this.renderCalendarWeeks()}
+                <CalendarInfoRow>
+                    {this.renderDaysOfTheWeek()}
+                    {this.renderCalendarWeeks()}
+                </CalendarInfoRow>
             </CalendarContainer>
         )
     }
@@ -228,14 +230,17 @@ const CalendarMonthYear = styled.h2`
     font-weight: bold;
 `;
 
+const CalendarInfoRow = styled(Row)`
+    border: 1px red solid;
+`
+
 const Days = styled.div`
 `;
 
-const DaysOfTheWeek = styled.div`
+const DaysOfTheWeek = styled(Col)`
   padding-bottom: 20px;
   font-weight: bold;
   width: 100%;
-  border: 1px red solid;
 `;
 
 const DateCells = styled.div`
