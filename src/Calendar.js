@@ -183,9 +183,7 @@ export default class Calendar extends Component {
                         />
                     </CalendarHeader>
                 </CalendarHeaderRow>
-            <Weekdays data-test="weekdays">
                 {this.renderDaysOfTheWeek()}
-            </Weekdays>
                 {this.renderCalendarWeeks()}
             </CalendarContainer>
         )
@@ -216,9 +214,9 @@ const NextArrowImage = styled(PrevArrowImage)`
     float: right
 `;
 
-const CalendarHeaderRow = styled(Row)``;
+const CalendarHeaderRow = styled.div``;
 
-const CalendarHeader = styled(Col)`
+const CalendarHeader = styled.div`
     margin-bottom: 20px;
     display: flex;
     flex-direction: row;
@@ -230,21 +228,17 @@ const CalendarMonthYear = styled.h2`
     font-weight: bold;
 `;
 
-const Weekdays = styled(Row)`
-    display: flex;
+const Days = styled.div`
 `;
 
-const Days = styled(Row)`
-`;
-
-const DaysOfTheWeek = styled(Col)`
+const DaysOfTheWeek = styled.div`
   padding-bottom: 20px;
   font-weight: bold;
   width: 100%;
   border: 1px red solid;
 `;
 
-const DateCells = styled(Col)`
+const DateCells = styled.div`
   background-color: ${props => props.number != null ? '#fce94b;' : '#ffffff;'}
   color: #01224b;
   font-weight: bold;
