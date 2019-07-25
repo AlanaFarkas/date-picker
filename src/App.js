@@ -35,7 +35,7 @@ export default class App extends Component {
       <AppContainer data-test="app-container">
         <AppHeaderRow justify={"center"} data-test="app-header">
           <AppHeaderColumn>
-            <HeaderText>Choose a date</HeaderText>
+            <HeaderText>Datepicker</HeaderText>
             <InputContainerDiv>
               <Input />
               <CalendarImg

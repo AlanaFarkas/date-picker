@@ -129,7 +129,10 @@ export default class Calendar extends Component {
     renderDaysOfTheWeek() {
         const dayStrings = ALL_DAYS.map((day, i) => {
           return (
-                <DaysOfTheWeek data-test={`day-of-the-week-${day}`} key={i}>
+                <DaysOfTheWeek 
+                    data-test={`day-of-the-week-${day}`} 
+                    key={i}
+                >
                     {day}
                 </DaysOfTheWeek>
           )
@@ -152,9 +155,7 @@ export default class Calendar extends Component {
             const semanticSelectedDate = `${humanWeekday}, ${humanMonth} ${humanDate}, ${humanYear}`
             return (
                 <HeaderDate data-test="header-date">
-                    <h2>
-                        Chosen date: {semanticSelectedDate}
-                    </h2>
+                    <h2>{semanticSelectedDate}</h2>
                 </HeaderDate>
             )
         }
@@ -198,8 +199,10 @@ export default class Calendar extends Component {
 }
 
 const calendarFadeIn = keyframes `${fadeIn}`;
+const chosenDateFadeIn = keyframes `${fadeIn}`;
 
 const HeaderDate = styled.div`
+    animation: 1s ${chosenDateFadeIn}
 `;
 
 const CalendarContainer = styled(Container)`
