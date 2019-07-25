@@ -74,13 +74,9 @@ export default class Calendar extends Component {
             year,
             monthDigit,
         } = this.state;
-
-        // if(date != null) {
-        //     this.setState({selectedDate: createDateObjectFromSelectedDate(year, monthDigit, date)})
-        // }
-
-        if ( date == null ) {
-            console.log('uh?')
+        
+        if (date == null) {
+            return;
         }
 
         this.setState({selectedDate: createDateObjectFromSelectedDate(year, monthDigit, date)})
