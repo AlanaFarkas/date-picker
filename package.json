@@ -18,7 +18,13 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "parserOptions": {
+      "ecmaVersion": 6
+    },
+    "env": {
+      "es6": true
+    }
   },
   "browserslist": [
     ">0.2%",

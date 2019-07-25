@@ -170,28 +170,28 @@ export default class Calendar extends Component {
         } = this.state;
 
         return (
-                <CalendarContainer data-test="calendar-container">
-                        {this.renderChosenDate()}
-                    <CalendarHeaderRow>
-                        <CalendarHeader data-test="calendar-header">
-                            <PrevArrowImage
-                            data-test="prev-arrow-icon"
-                            onClick={this.handlePrev}
-                            src={PrevArrow}
+            <CalendarContainer data-test="calendar-container">
+                    {this.renderChosenDate()}
+                <CalendarHeaderRow>
+                    <CalendarHeader data-test="calendar-header">
+                        <PrevArrowImage
+                        data-test="prev-arrow-icon"
+                        onClick={this.handlePrev}
+                        src={PrevArrow}
+                    />
+                        <CalendarMonthYear>{displayedMonth} {year}</CalendarMonthYear>
+                        <NextArrowImage
+                            data-test="next-arrow-icon"
+                            onClick={this.handleNext}
+                            src={NextArrow}
                         />
-                            <CalendarMonthYear>{displayedMonth} {year}</CalendarMonthYear>
-                            <NextArrowImage
-                                data-test="next-arrow-icon"
-                                onClick={this.handleNext}
-                                src={NextArrow}
-                            />
-                        </CalendarHeader>
-                    </CalendarHeaderRow>
-                <Weekdays data-test="weekdays">
-                    {this.renderDaysOfTheWeek()}
-                </Weekdays>
-                    {this.renderCalendarWeeks()}
-                </CalendarContainer>
+                    </CalendarHeader>
+                </CalendarHeaderRow>
+            <Weekdays data-test="weekdays">
+                {this.renderDaysOfTheWeek()}
+            </Weekdays>
+                {this.renderCalendarWeeks()}
+            </CalendarContainer>
         )
     }
 
