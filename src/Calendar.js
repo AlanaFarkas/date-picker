@@ -146,19 +146,20 @@ export default class Calendar extends Component {
             months,
         } = this.state;
 
-        if(selectedDate != null) {
-
-            const humanWeekday = ALL_DAYS[selectedDate.getDay()];
-            const humanDate = selectedDate.getDate();
-            const humanMonth = months[selectedDate.getMonth()];
-            const humanYear = selectedDate.getFullYear();
-            const semanticSelectedDate = `${humanWeekday}, ${humanMonth} ${humanDate}, ${humanYear}`
-            return (
-                <HeaderDate data-test="header-date">
-                    <h2>{semanticSelectedDate}</h2>
-                </HeaderDate>
-            )
+        if(selectedDate == null) {
+            return;
         }
+
+        const humanWeekday = ALL_DAYS[selectedDate.getDay()];
+        const humanDate = selectedDate.getDate();
+        const humanMonth = months[selectedDate.getMonth()];
+        const humanYear = selectedDate.getFullYear();
+        const semanticSelectedDate = `${humanWeekday}, ${humanMonth} ${humanDate}, ${humanYear}`
+        return (
+            <HeaderDate data-test="header-date">
+                <h2>{semanticSelectedDate}</h2>
+            </HeaderDate>
+        )
 
     }
 
@@ -246,6 +247,7 @@ const DaysOfTheWeek = styled(Col)`
   padding-bottom: 20px;
   font-weight: bold;
   width: 100%;
+  border: 1px red solid;
 `;
 
 const DateCells = styled(Col)`

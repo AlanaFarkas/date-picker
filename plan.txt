@@ -1,5 +1,6 @@
-showCal() on input Click
+Add markup to this plan.
 
+Add reset button to remove selected date
+Selected date cell should render in blue
 DRY up code
-
-WRITE TESTS!
+Write tests

@@ -16,7 +16,6 @@ export const whatDateDoesTheMonthStartOn = (year, monthDigit) => {
     return firstDayOfMonthAsInt;
 }
 
-
 export const createDateObjectFromSelectedDate = (year, monthDigit, date) => {
     let selectedDate = new Date(year, monthDigit, date);
     return selectedDate
