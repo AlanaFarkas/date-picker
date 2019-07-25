@@ -52,5 +52,3 @@ export const createWeeks = (daysInThisMonth, dayItStartsOn, year, monthDigit) =>
     return thisMonth;
 
 }
-
-// I have an array that is 

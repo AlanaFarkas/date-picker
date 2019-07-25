@@ -12,5 +12,5 @@ export const ALL_MONTHS = {
     November: 30,
     December: 31
 }
-export const ALL_DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
+export const ALL_DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
