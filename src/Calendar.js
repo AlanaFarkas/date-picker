@@ -170,7 +170,6 @@ export default class Calendar extends Component {
         } = this.state;
 
         return (
-            <React.Fragment>
                 <CalendarContainer data-test="calendar-container">
                         {this.renderChosenDate()}
                     <CalendarHeaderRow>
@@ -193,7 +192,6 @@ export default class Calendar extends Component {
                 </Weekdays>
                     {this.renderCalendarWeeks()}
                 </CalendarContainer>
-            </React.Fragment>
         )
     }
 
