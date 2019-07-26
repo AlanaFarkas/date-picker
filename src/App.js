@@ -39,7 +39,7 @@ export default class App extends Component {
           </AppHeaderColumn>
         </AppHeaderRow>
         <InputRow data-test="input-row">
-          <InputColumn data-test="input-column-">
+          <InputColumn data-test="input-column">
             <Input />
             <CalendarImg
               data-test="calendar-icon"
@@ -54,23 +54,17 @@ export default class App extends Component {
   }
 }
 
-const AppContainer = styled(Container)`
-`;
-
+const AppContainer = styled(Container)``;
 const AppHeaderRow = styled(Row)``;
-
 const AppHeaderColumn = styled(Col)``;
 
 const HeaderText = styled.h2`
   text-align: center;
 `;
 
-const InputRow = styled(Row)`
-  // display: inline-block;
-  // position: relative;
+const InputRow = styled(Row)``;
+const InputColumn = styled(Col)`
 `;
-
-const InputColumn = styled(Col)``;
 
 const CalendarImg = styled.img`
   height: 25px;
