@@ -54,7 +54,6 @@ export default class App extends Component {
 
 const AppContainer = styled(Container)`
   text-align: center;
-  border: 1px red solid;
 `;
 
 const AppHeaderRow = styled.div``;
