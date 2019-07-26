@@ -235,11 +235,9 @@ const CalendarMonthYear = styled(Col)`
 
 const DaysOfTheWeekRow = styled(Row)`
     flex-wrap: nowrap!important;
-    border: 1px blue solid;
-`
+`;
 
 const Week = styled(DaysOfTheWeekRow)`
-    border: 1px green solid;    
 `;
 
 const Weekday = styled(Col)`
