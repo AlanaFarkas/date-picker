@@ -146,15 +146,14 @@ export default class Calendar extends Component {
             return;
         }
 
-        const humanWeekday = ALL_DAYS[selectedDate.getDay()];
         const humanDate = selectedDate.getDate();
         const humanMonth = months[selectedDate.getMonth()];
         const humanYear = selectedDate.getFullYear();
-        const semanticSelectedDate = `${humanWeekday}, ${humanMonth} ${humanDate}, ${humanYear}`
+        const semanticSelectedDate = `${humanMonth} ${humanDate}, ${humanYear}`
         return (
-            <HeaderDate data-test="header-date">
+            <HeaderDateRow data-test="header-date">
                 <h2>{semanticSelectedDate}</h2>
-            </HeaderDate>
+            </HeaderDateRow>
         )
 
     }
@@ -185,7 +184,6 @@ export default class Calendar extends Component {
                         />
                     </NextImgColumn>
                 </CalendarHeader>
-
                 <DaysOfTheWeekRow data-test="days-of-the-week-row">
                     {this.renderDaysOfTheWeek()}                    
                 </DaysOfTheWeekRow>
@@ -196,19 +194,20 @@ export default class Calendar extends Component {
 
 }
 
-// {this.renderCalendarWeeks()}
-
 const calendarFadeIn = keyframes `${fadeIn}`;
 const chosenDateFadeIn = keyframes `${fadeIn}`;
 
-const HeaderDate = styled.div`
+const HeaderDateRow = styled(Row)`
     animation: 1s ${chosenDateFadeIn}
+    h2 {
+        text-align: center;
+    }    
 `;
 
 const CalendarContainer = styled(Container)`
     animation: 1s ${calendarFadeIn}
     padding: 20px;
-    margin: auto;
+    margin: 50px auto;
 `;
 
 const PrevImgColumn = styled(Col)``
@@ -231,6 +230,8 @@ const CalendarHeader = styled(Row)`
 
 const CalendarMonthYear = styled(Col)`
     font-weight: bold;
+    text-align: center;
+    font-size: 20px;
 `;
 
 const DaysOfTheWeekRow = styled(Row)`
@@ -244,6 +245,7 @@ const Weekday = styled(Col)`
   padding-bottom: 20px;
   font-weight: bold;
   width: 100%;
+  text-align: center;
 `;
 
 const DateCell = styled(Col)`

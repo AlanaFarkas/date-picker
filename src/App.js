@@ -49,7 +49,9 @@ export default class App extends Component {
   }
 }
 
-const AppContainer = styled(Container)``;
+const AppContainer = styled(Container)`
+  margin-top: 25px;
+`;
 const AppHeaderRow = styled(Row)``;
 
 const AppHeaderColumn = styled(Col)`
