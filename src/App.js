@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-grid-system';
 import styled from 'styled-components';
 import calendarIcon from './assets/calendar_icon.svg';
-import Input from './Input'
 import Calendar from './Calendar';
 
 export default class App extends Component {
@@ -36,18 +35,14 @@ export default class App extends Component {
         <AppHeaderRow data-test="app-header-row">
           <AppHeaderColumn>
             <HeaderText>Datepicker</HeaderText>
-          </AppHeaderColumn>
-        </AppHeaderRow>
-        <InputRow data-test="input-row">
-          <InputColumn data-test="input-column">
-            <Input />
+          
             <CalendarImg
               data-test="calendar-icon"
               onClick={this.showCalendar}
               src={calendarIcon}
             />
-          </InputColumn>
-        </InputRow>        
+          </AppHeaderColumn>
+        </AppHeaderRow>     
         {this.maybeRenderCalendar()}
       </AppContainer>
     );
@@ -56,19 +51,19 @@ export default class App extends Component {
 
 const AppContainer = styled(Container)``;
 const AppHeaderRow = styled(Row)``;
-const AppHeaderColumn = styled(Col)``;
+
+const AppHeaderColumn = styled(Col)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
 
 const HeaderText = styled.h2`
   text-align: center;
 `;
 
-const InputRow = styled(Row)``;
-const InputColumn = styled(Col)`
-`;
-
 const CalendarImg = styled.img`
-  height: 25px;
-  position: absolute;
-  // right: 3px;
-  // top: 3px;
+  height: 40px;
+  margin-left: 10px;
 `;
