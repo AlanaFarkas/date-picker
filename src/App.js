@@ -33,19 +33,21 @@ export default class App extends Component {
   render() {
     return (
       <AppContainer data-test="app-container">
-        <AppHeaderRow justify={"center"} data-test="app-header">
+        <AppHeaderRow data-test="app-header-row">
           <AppHeaderColumn>
             <HeaderText>Datepicker</HeaderText>
-            <InputContainerDiv>
-              <Input />
-              <CalendarImg
-                data-test="calendar-icon"
-                onClick={this.showCalendar}
-                src={calendarIcon}
-              />
-            </InputContainerDiv>
           </AppHeaderColumn>
         </AppHeaderRow>
+        <InputRow data-test="input-row">
+          <InputColumn data-test="input-column-">
+            <Input />
+            <CalendarImg
+              data-test="calendar-icon"
+              onClick={this.showCalendar}
+              src={calendarIcon}
+            />
+          </InputColumn>
+        </InputRow>        
         {this.maybeRenderCalendar()}
       </AppContainer>
     );
@@ -53,25 +55,26 @@ export default class App extends Component {
 }
 
 const AppContainer = styled(Container)`
-  text-align: center;
 `;
 
-const AppHeaderRow = styled.div``;
+const AppHeaderRow = styled(Row)``;
 
-const AppHeaderColumn = styled.div``;
+const AppHeaderColumn = styled(Col)``;
 
 const HeaderText = styled.h2`
   text-align: center;
 `;
 
-const InputContainerDiv = styled.div`
-  display: inline-block;
-  position: relative;
+const InputRow = styled(Row)`
+  // display: inline-block;
+  // position: relative;
 `;
+
+const InputColumn = styled(Col)``;
 
 const CalendarImg = styled.img`
   height: 25px;
   position: absolute;
-  right: 3px;
-  top: 3px;
+  // right: 3px;
+  // top: 3px;
 `;
