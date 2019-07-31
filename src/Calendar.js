@@ -199,6 +199,7 @@ const chosenDateFadeIn = keyframes `${fadeIn}`;
 
 const HeaderDateRow = styled(Row)`
     animation: 1s ${chosenDateFadeIn}  
+    margin-bottom: 25px;
 `;
 
 const ChosenDate = styled.h2`
@@ -209,7 +210,6 @@ const ChosenDate = styled.h2`
 const CalendarContainer = styled(Container)`
     animation: 1s ${calendarFadeIn}
     padding: 20px;
-    margin: 50px auto;
 `;
 
 const PrevImgColumn = styled(Col)``
