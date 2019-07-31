@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-grid-system';
-import styled from 'styled-components';
+import { bounceInRight } from 'react-animations';
+import styled, { keyframes } from 'styled-components';
 import calendarIcon from './assets/calendar_icon.svg';
 import Calendar from './Calendar';
 
@@ -49,6 +50,8 @@ export default class App extends Component {
   }
 }
 
+const bounceInRightInstructions = keyframes `${bounceInRight}`;
+
 const AppContainer = styled(Container)`
   margin-top: 25px;
 `;
@@ -62,7 +65,7 @@ const AppHeaderColumn = styled(Col)`
 `;
 
 const ClickMe = styled.p`
-
+  animation: 3s ${bounceInRightInstructions}  
 `;
 
 const HeaderText = styled.h2`
