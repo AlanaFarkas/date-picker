@@ -196,21 +196,21 @@ export default class Calendar extends Component {
 
 const calendarFadeIn = keyframes `${fadeIn}`;
 
+const CalendarContainer = styled(Container)`
+    animation: 1s ${calendarFadeIn}
+    padding: 20px;
+`;
+
+const chosenDateFadeIn = keyframes `${fadeIn}`;
+
 const HeaderDateRow = styled(Row)`
     animation: 1s ${chosenDateFadeIn}  
     margin-bottom: 25px;
 `;
 
-const chosenDateFadeIn = keyframes `${fadeIn}`;
-
 const ChosenDate = styled.h2`
     margin: auto;
     text-align: center;
-`;
-
-const CalendarContainer = styled(Container)`
-    animation: 1s ${calendarFadeIn}
-    padding: 20px;
 `;
 
 const PrevImgColumn = styled(Col)``
