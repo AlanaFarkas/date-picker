@@ -195,12 +195,13 @@ export default class Calendar extends Component {
 }
 
 const calendarFadeIn = keyframes `${fadeIn}`;
-const chosenDateFadeIn = keyframes `${fadeIn}`;
 
 const HeaderDateRow = styled(Row)`
     animation: 1s ${chosenDateFadeIn}  
     margin-bottom: 25px;
 `;
+
+const chosenDateFadeIn = keyframes `${fadeIn}`;
 
 const ChosenDate = styled.h2`
     margin: auto;
@@ -240,8 +241,7 @@ const DaysOfTheWeekRow = styled(Row)`
     flex-wrap: nowrap!important;
 `;
 
-const Week = styled(DaysOfTheWeekRow)`
-`;
+const Week = styled(DaysOfTheWeekRow)``;
 
 const Weekday = styled(Col)`
   padding-bottom: 20px;

@@ -55,6 +55,7 @@ const bounceInRightInstructions = keyframes `${bounceInRight}`;
 const AppContainer = styled(Container)`
   margin-top: 25px;
 `;
+
 const AppHeaderRow = styled(Row)``;
 
 const AppHeaderColumn = styled(Col)`
