@@ -34,13 +34,13 @@ export default class App extends Component {
       <AppContainer data-test="app-container">
         <AppHeaderRow data-test="app-header-row">
           <AppHeaderColumn>
-            <HeaderText>Datepicker</HeaderText>
-          
+            <HeaderText>Datepicker</HeaderText>          
             <CalendarImg
               data-test="calendar-icon"
               onClick={this.showCalendar}
               src={calendarIcon}
             />
+            <ClickMe>&larr;Click to get started</ClickMe>
           </AppHeaderColumn>
         </AppHeaderRow>     
         {this.maybeRenderCalendar()}
@@ -61,11 +61,15 @@ const AppHeaderColumn = styled(Col)`
   justify-content: center;
 `;
 
+const ClickMe = styled.p`
+
+`;
+
 const HeaderText = styled.h2`
   text-align: center;
 `;
 
 const CalendarImg = styled.img`
   height: 40px;
-  margin-left: 10px;
+  margin: 0 10px;
 `;
