@@ -152,7 +152,7 @@ export default class Calendar extends Component {
         const semanticSelectedDate = `${humanMonth} ${humanDate}, ${humanYear}`
         return (
             <HeaderDateRow data-test="header-date">
-                <h2>{semanticSelectedDate}</h2>
+                <ChosenDate>{semanticSelectedDate}</ChosenDate>
             </HeaderDateRow>
         )
 
@@ -198,10 +198,12 @@ const calendarFadeIn = keyframes `${fadeIn}`;
 const chosenDateFadeIn = keyframes `${fadeIn}`;
 
 const HeaderDateRow = styled(Row)`
-    animation: 1s ${chosenDateFadeIn}
-    h2 {
-        text-align: center;
-    }    
+    animation: 1s ${chosenDateFadeIn}  
+`;
+
+const ChosenDate = styled.h2`
+    margin: auto;
+    text-align: center;
 `;
 
 const CalendarContainer = styled(Container)`
