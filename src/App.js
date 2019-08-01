@@ -41,7 +41,7 @@ export default class App extends Component {
               onClick={this.showCalendar}
               src={calendarIcon}
             />
-            <ClickMe>&larr;Click to get started</ClickMe>
+            <ClickMe display={this.state.openCalendar}>&larr;Click to get started</ClickMe>
           </AppHeaderColumn>
         </AppHeaderRow>     
         {this.maybeRenderCalendar()}
@@ -66,7 +66,8 @@ const AppHeaderColumn = styled(Col)`
 `;
 
 const ClickMe = styled.p`
-  animation: 3s ${bounceInRightInstructions}  
+  animation: 3s ${bounceInRightInstructions};
+  display: ${props => props.display ? 'none' : 'block'};
 `;
 
 const HeaderText = styled.h2`
@@ -76,4 +77,5 @@ const HeaderText = styled.h2`
 const CalendarImg = styled.img`
   height: 40px;
   margin: 0 10px;
+  cursor: pointer;
 `;

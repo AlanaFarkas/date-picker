@@ -1,23 +1,22 @@
 
 export const isThisALeapYear = (year) => {
-    let leapYear = year % 4 === 0 && year % 100 !== 0 ? true : false;
-    return leapYear
+    const leapYear = year % 4 === 0 && year % 100 !== 0 ? true : false;
+    return leapYear;
 }
 
 export const addLeapDay = (year, monthDigit) => {
-    if(isThisALeapYear(year) && monthDigit === 1) {
-        return true;
-    }
+    const addLeapDay = isThisALeapYear(year) && monthDigit === 1 ? true : false;
+    return addLeapDay;
 }
 
 export const whatDateDoesTheMonthStartOn = (year, monthDigit) => {
-    let firstOfMonth = new Date(year, monthDigit);
+    const firstOfMonth = new Date(year, monthDigit);
     const firstDayOfMonthAsInt = firstOfMonth.getDay();
     return firstDayOfMonthAsInt;
 }
 
 export const createDateObjectFromSelectedDate = (year, monthDigit, date) => {
-    let selectedDate = new Date(year, monthDigit, date);
+    const selectedDate = new Date(year, monthDigit, date);
     return selectedDate
 }
 
