@@ -8,7 +8,7 @@ export const addLeapDay = (year, monthDigit) => {
     if(isThisALeapYear(year) && monthDigit === 1) {
         return true;
     }
-} // USE THIS ONE
+}
 
 export const whatDateDoesTheMonthStartOn = (year, monthDigit) => {
     let firstOfMonth = new Date(year, monthDigit);
