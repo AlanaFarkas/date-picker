@@ -48,5 +48,4 @@ export const createWeeks = (daysInThisMonth, dayItStartsOn, year, monthDigit) =>
     }
 
     return thisMonth;
-
 }
