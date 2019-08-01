@@ -7,15 +7,13 @@ import { whatDateDoesTheMonthStartOn, createWeeks, createDateObjectFromSelectedD
 import PrevArrow from './assets/l_arrow.svg'
 import NextArrow from './assets/r_arrow.svg'
 
-const calendarFadeIn = keyframes `${fadeIn}`;
-
 export default class Calendar extends Component {
 
     state = {
         year: new Date().getFullYear(),
         monthDigit: new Date().getMonth(),
         displayedDates: Object.values(ALL_MONTHS)[new Date().getMonth()],
-        selectedDate: new Date(),
+        selectedDate: null,
         months: Object.keys(ALL_MONTHS),
         displayedMonth: Object.keys(ALL_MONTHS)[new Date().getMonth()],
         dates: Object.values(ALL_MONTHS),
@@ -76,10 +74,12 @@ export default class Calendar extends Component {
             year,
             monthDigit,
         } = this.state;
-
-        if(date != null) {
-            this.setState({selectedDate: createDateObjectFromSelectedDate(year, monthDigit, date)})
+        
+        if (date == null) {
+            return;
         }
+
+        this.setState({selectedDate: createDateObjectFromSelectedDate(year, monthDigit, date)})
     }
 
     renderCalendarWeeks() {
@@ -102,9 +102,9 @@ export default class Calendar extends Component {
 
         const renderedCalendarWeeks = dates.map((week, i) => {
             return (
-                <Days key={i}>
+                <Week key={i}>
                     {week.map((number, i) =>
-                        <DateCells
+                        <DateCell
                             data-test={`date-cell-${number}`}
                             number={number}
                             onClick={() => this.handleSelectDate(number)}
@@ -113,9 +113,9 @@ export default class Calendar extends Component {
                             <DateDigit>
                                 {number}
                             </DateDigit>
-                        </DateCells>
+                        </DateCell>
                     )}
-                </Days>
+                </Week>
             );
         });
 
@@ -125,7 +125,12 @@ export default class Calendar extends Component {
     renderDaysOfTheWeek() {
         const dayStrings = ALL_DAYS.map((day, i) => {
           return (
-                <DaysOfTheWeek data-test={`day-of-the-week-${day}`} key={i}>{day}</DaysOfTheWeek>
+                <Weekday 
+                    data-test={`day-of-the-week-${day}`} 
+                    key={i}
+                >
+                    {day}
+                </Weekday>
           )
         });
         return dayStrings;
@@ -137,16 +142,20 @@ export default class Calendar extends Component {
             months,
         } = this.state;
 
-        const humanWeekday = ALL_DAYS[selectedDate.getDay()];
+        if(selectedDate == null) {
+            return;
+        }
+
         const humanDate = selectedDate.getDate();
         const humanMonth = months[selectedDate.getMonth()];
         const humanYear = selectedDate.getFullYear();
-        const semanticSelectedDate = `${humanWeekday}, ${humanMonth} ${humanDate}, ${humanYear}`
+        const semanticSelectedDate = `${humanMonth} ${humanDate}, ${humanYear}`
         return (
-            <HeaderDate data-test="header-date">
-                <h2>Chosen date: {semanticSelectedDate}</h2>
-            </HeaderDate>
+            <HeaderDateRow data-test="header-date">
+                <ChosenDate>{semanticSelectedDate}</ChosenDate>
+            </HeaderDateRow>
         )
+
     }
 
     render() {
@@ -156,43 +165,56 @@ export default class Calendar extends Component {
         } = this.state;
 
         return (
-            <React.Fragment>
-                <CalendarContainer data-test="calendar-container">
-                        {this.renderChosenDate()}
-                    <CalendarHeaderRow>
-                        <CalendarHeader data-test="calendar-header">
-                            <PrevArrowImage
+            <CalendarContainer data-test="calendar-container">
+                {this.renderChosenDate()}
+                <CalendarHeader data-test="calendar-header">
+                    <PrevImgColumn>
+                        <PrevArrowImage
                             data-test="prev-arrow-icon"
                             onClick={this.handlePrev}
                             src={PrevArrow}
                         />
-                            <CalendarMonthYear>{displayedMonth} {year}</CalendarMonthYear>
-                            <NextArrowImage
-                                data-test="next-arrow-icon"
-                                onClick={this.handleNext}
-                                src={NextArrow}
-                            />
-                        </CalendarHeader>
-                    </CalendarHeaderRow>
-                <Weekdays data-test="weekdays">
-                    {this.renderDaysOfTheWeek()}
-                </Weekdays>
+                    </PrevImgColumn>
+                    <CalendarMonthYear>{displayedMonth} {year}</CalendarMonthYear>
+                    <NextImgColumn>
+                        <NextArrowImage
+                            data-test="next-arrow-icon"
+                            onClick={this.handleNext}
+                            src={NextArrow}
+                        />
+                    </NextImgColumn>
+                </CalendarHeader>
+                <DaysOfTheWeekRow data-test="days-of-the-week-row">
+                    {this.renderDaysOfTheWeek()}                    
+                </DaysOfTheWeekRow>
                     {this.renderCalendarWeeks()}
-                </CalendarContainer>
-            </React.Fragment>
+            </CalendarContainer>
         )
     }
 
 }
 
-const HeaderDate = styled.div`
-`;
+const calendarFadeIn = keyframes `${fadeIn}`;
 
 const CalendarContainer = styled(Container)`
     animation: 1s ${calendarFadeIn}
     padding: 20px;
-    margin: 30px auto 0;
 `;
+
+const chosenDateFadeIn = keyframes `${fadeIn}`;
+
+const HeaderDateRow = styled(Row)`
+    animation: 1s ${chosenDateFadeIn}  
+    margin-bottom: 25px;
+`;
+
+const ChosenDate = styled.h2`
+    margin: auto;
+    text-align: center;
+`;
+
+const PrevImgColumn = styled(Col)``
+const NextImgColumn = styled(PrevImgColumn)``
 
 const PrevArrowImage = styled.img`
     float: left;
@@ -204,34 +226,31 @@ const NextArrowImage = styled(PrevArrowImage)`
     float: right
 `;
 
-const CalendarHeaderRow = styled(Row)``;
-
-const CalendarHeader = styled(Col)`
+const CalendarHeader = styled(Row)`
     margin-bottom: 20px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-around;
 `;
 
-const CalendarMonthYear = styled.h2`
+const CalendarMonthYear = styled(Col)`
     font-weight: bold;
+    text-align: center;
+    font-size: 20px;
 `;
 
-const Weekdays = styled(Row)`
-    display: flex;
+const DaysOfTheWeekRow = styled(Row)`
+    flex-wrap: nowrap!important;
 `;
 
-const Days = styled(Row)`
-`;
+const Week = styled(DaysOfTheWeekRow)``;
 
-const DaysOfTheWeek = styled(Col)`
+const Weekday = styled(Col)`
   padding-bottom: 20px;
   font-weight: bold;
   width: 100%;
+  text-align: center;
 `;
 
-const DateCells = styled(Col)`
+const DateCell = styled(Col)`
   background-color: ${props => props.number != null ? '#fce94b;' : '#ffffff;'}
   color: #01224b;
   font-weight: bold;
@@ -248,7 +267,7 @@ const DateCells = styled(Col)`
 
 const DateDigit = styled.div`
   text-align: right;
-  margin: 5px 10px 0 0;
+  margin-top: 5px;
 `;
 
 

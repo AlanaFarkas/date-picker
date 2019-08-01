@@ -15,4 +15,6 @@ export default Input;
 const TimeDateInput = styled.input`
     height: 25px;
     width: 200px;
+    margin: auto;
+    display: block
 `;

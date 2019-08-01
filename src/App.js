@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-grid-system';
-import styled from 'styled-components';
+import { bounceInRight } from 'react-animations';
+import styled, { keyframes } from 'styled-components';
 import calendarIcon from './assets/calendar_icon.svg';
-import Input from './Input'
 import Calendar from './Calendar';
 
 export default class App extends Component {
@@ -33,45 +33,49 @@ export default class App extends Component {
   render() {
     return (
       <AppContainer data-test="app-container">
-        <AppHeaderRow justify={"center"} data-test="app-header">
+        <AppHeaderRow data-test="app-header-row">
           <AppHeaderColumn>
-            <HeaderText>Choose a date</HeaderText>
-            <InputContainerDiv>
-              <Input />
-              <CalendarImg
-                data-test="calendar-icon"
-                onClick={this.showCalendar}
-                src={calendarIcon}
-              />
-            </InputContainerDiv>
+            <HeaderText>Datepicker</HeaderText>          
+            <CalendarImg
+              data-test="calendar-icon"
+              onClick={this.showCalendar}
+              src={calendarIcon}
+            />
+            <ClickMe display={this.state.openCalendar}>&larr;Click to get started</ClickMe>
           </AppHeaderColumn>
-        </AppHeaderRow>
+        </AppHeaderRow>     
         {this.maybeRenderCalendar()}
       </AppContainer>
     );
   }
 }
 
+const bounceInRightInstructions = keyframes `${bounceInRight}`;
+
 const AppContainer = styled(Container)`
-  text-align: center;
+  margin-top: 25px;
 `;
 
 const AppHeaderRow = styled(Row)``;
 
-const AppHeaderColumn = styled(Col)``;
+const AppHeaderColumn = styled(Col)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ClickMe = styled.p`
+  animation: 2s ${bounceInRightInstructions};
+  display: ${props => props.display ? 'none' : 'block'};
+`;
 
 const HeaderText = styled.h2`
   text-align: center;
 `;
 
-const InputContainerDiv = styled.div`
-  display: inline-block;
-  position: relative;
-`;
-
 const CalendarImg = styled.img`
-  height: 25px;
-  position: absolute;
-  right: 3px;
-  top: 3px;
+  height: 40px;
+  margin: 0 10px;
+  cursor: pointer;
 `;
