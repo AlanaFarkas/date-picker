@@ -66,7 +66,7 @@ const AppHeaderColumn = styled(Col)`
 `;
 
 const ClickMe = styled.p`
-  animation: 3s ${bounceInRightInstructions};
+  animation: 2s ${bounceInRightInstructions};
   display: ${props => props.display ? 'none' : 'block'};
 `;
 
