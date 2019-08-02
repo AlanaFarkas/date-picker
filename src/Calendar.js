@@ -91,8 +91,6 @@ export default class Calendar extends Component {
             displayedDates
         } = this.state;
 
-        console.log(this.state)
-
         let dates = [];
 
         for(var i = 1; i < displayedDates + 1; i++) {
@@ -106,7 +104,7 @@ export default class Calendar extends Component {
             monthDigit,
             );
 
-        const renderedCalendarWeeks = dates.map((week, i) => {
+        return dates.map((week, i) => {
             return (
                 <Week key={i}>
                     {week.map((number, i) =>
@@ -124,12 +122,10 @@ export default class Calendar extends Component {
                 </Week>
             );
         });
-
-        return renderedCalendarWeeks;
     }
 
     renderDaysOfTheWeek() {
-        const dayStrings = ALL_DAYS.map((day, i) => {
+        return ALL_DAYS.map((day, i) => {
           return (
                 <Weekday 
                     data-test={`day-of-the-week-${day}`} 
@@ -139,7 +135,6 @@ export default class Calendar extends Component {
                 </Weekday>
           )
         });
-        return dayStrings;
     }
 
     renderChosenDate() {
