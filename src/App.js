@@ -31,6 +31,7 @@ export default class App extends Component {
   }
 
   render() {
+    const { openCalendar } = this.state;
     return (
       <AppContainer data-test="app-container">
         <AppHeaderRow data-test="app-header-row">
@@ -41,7 +42,7 @@ export default class App extends Component {
               onClick={this.showCalendar}
               src={calendarIcon}
             />
-            <ClickMe display={this.state.openCalendar}>&larr;Click to get started</ClickMe>
+            <ClickMe display={openCalendar}>&larr;Click to get started</ClickMe>
           </AppHeaderColumn>
         </AppHeaderRow>     
         {this.maybeRenderCalendar()}

@@ -12,5 +12,6 @@ export const ALL_MONTHS = {
     November: 30,
     December: 31
 }
+
 export const ALL_DAYS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
