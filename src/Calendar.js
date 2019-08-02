@@ -7,16 +7,18 @@ import { whatDateDoesTheMonthStartOn, createWeeks, createDateObjectFromSelectedD
 import PrevArrow from './assets/l_arrow.svg'
 import NextArrow from './assets/r_arrow.svg'
 
+const newDate = new Date();
+
 export default class Calendar extends Component {
 
     state = {
-        year: new Date().getFullYear(),
-        monthDigit: new Date().getMonth(),
-        displayedDates: Object.values(ALL_MONTHS)[new Date().getMonth()],
-        selectedDate: null,
-        months: Object.keys(ALL_MONTHS),
-        displayedMonth: Object.keys(ALL_MONTHS)[new Date().getMonth()],
         dates: Object.values(ALL_MONTHS),
+        displayedDates: Object.values(ALL_MONTHS)[newDate.getMonth()],
+        displayedMonth: Object.keys(ALL_MONTHS)[newDate.getMonth()],        
+        monthDigit: newDate.getMonth(),
+        months: Object.keys(ALL_MONTHS),        
+        selectedDate: null,        
+        year: newDate.getFullYear(),
     };
 
     handleNext = () => {
@@ -88,6 +90,8 @@ export default class Calendar extends Component {
             monthDigit,
             displayedDates
         } = this.state;
+
+        console.log(this.state)
 
         let dates = [];
 
