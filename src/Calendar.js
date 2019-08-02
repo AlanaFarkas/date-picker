@@ -101,7 +101,9 @@ export default class Calendar extends Component {
 
         dates = createWeeks(
             dates.length,
-            whatDateDoesTheMonthStartOn(year, monthDigit), year, monthDigit
+            whatDateDoesTheMonthStartOn(year, monthDigit), 
+            year, 
+            monthDigit,
             );
 
         const renderedCalendarWeeks = dates.map((week, i) => {
