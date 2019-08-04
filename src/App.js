@@ -42,7 +42,7 @@ export default class App extends Component {
               onClick={this.showCalendar}
               src={calendarIcon}
             />
-            <ClickMe display={openCalendar}>&larr;Click to get started</ClickMe>
+            <ClickMe show={openCalendar}>&larr;Click to get started</ClickMe>
           </AppHeaderColumn>
         </AppHeaderRow>     
         {this.maybeRenderCalendar()}
@@ -68,7 +68,7 @@ const AppHeaderColumn = styled(Col)`
 
 const ClickMe = styled.p`
   animation: 2s ${bounceInRightInstructions};
-  display: ${props => props.display ? 'none' : 'block'};
+  display: ${props => props.show ? 'none' : 'block'};
 `;
 
 const HeaderText = styled.h2`
