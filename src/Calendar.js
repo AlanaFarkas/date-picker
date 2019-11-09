@@ -219,7 +219,7 @@ const NextImgColumn = styled(PrevImgColumn)``
 
 const PrevArrowImage = styled.img`
     float: left;
-    width: 30px;
+    width: 20px;
     cursor: pointer;
 `;
 
